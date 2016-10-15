@@ -1,15 +1,14 @@
+import { PersonalBlogPage } from './app.po';
 
-describe('QuickStart E2E Tests', function () {
+describe('personal-blog App', function() {
+  let page: PersonalBlogPage;
 
-  let expectedMsg = 'My First Angular App';
-
-
-  beforeEach(function () {
-    browser.get('');
+  beforeEach(() => {
+    page = new PersonalBlogPage();
   });
 
-  it('should display: ' + expectedMsg, function () {
-    expect(element(by.css('h1')).getText()).toEqual(expectedMsg);
+  it('should display message saying app works', () => {
+    page.navigateTo();
+    expect(page.getParagraphText()).toEqual('app works!');
   });
-
 });
