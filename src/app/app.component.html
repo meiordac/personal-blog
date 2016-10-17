@@ -1,3 +1,9 @@
-<h1>
-  {{title}}
-</h1>
+<h1> {{title}} {{post}} </h1>
+
+<h2>Posts</h2>
+<ul class="posts">
+  <li *ngFor="let post of posts">
+    <!-- each hero goes here -->
+    <span class="badge">{{post.id}}</span> {{post.title}}
+  </li>
+</ul>
