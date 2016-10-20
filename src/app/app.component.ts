@@ -16,7 +16,7 @@ const POSTS: Post[] = [
     title: "I love angular",
     content: "Who doesn't? ",
     author: "Matias",
-    image: "assets/img/coffee.jpg",
+    image: "assets/img/road.jpg",
     avatar: "assets/img/co1.jpg"
   }
 ];
@@ -28,8 +28,10 @@ const POSTS: Post[] = [
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Personal Blog!';
+  title = 'Blog!';
   subheading = 'In Angular 2';
   github= 'https://github.com/meiordac/';
+  linkedin= 'https://cl.linkedin.com/in/matiasiordache';
+  stackoverflow= 'http://stackoverflow.com/users/2373657/matias-iordache';
   posts= POSTS; 
 }
