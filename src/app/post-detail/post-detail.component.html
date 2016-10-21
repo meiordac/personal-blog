@@ -1,6 +1,16 @@
 <div *ngIf="post">
-<p>
-  {{post.content}}
-  {{post.title}}
-</p>
+     <md-card >
+      <md-card-header>
+      <img md-card-avatar src={{post.avatar}}>
+      <md-card-title>{{post.title}}</md-card-title>
+      <md-card-subtitle> {{post.author}}</md-card-subtitle>
+      </md-card-header>
+      <img md-card-image src={{post.image}}>
+   <md-card-content>
+      <p>{{post.content}}</p>
+   </md-card-content>
+      <md-card-actions>
+        <button md-raised-button (click)="goBack()">BACK</button>
+   </md-card-actions>
+   </md-card>
 </div>

@@ -8,6 +8,7 @@ import { RouterModule }   from '@angular/router';
 import { AppComponent } from './app.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { BlogComponent } from './blog/blog.component'
+import {PostService} from './post.service'
 
 @NgModule({
   declarations: [
@@ -19,9 +20,19 @@ import { BlogComponent } from './blog/blog.component'
     MaterialModule.forRoot(),
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot([
+      {
+        path: '',
+        component: BlogComponent
+      },
+      {
+        path: 'detail/:id',
+        component: PostDetailComponent
+      }
+    ])
   ],
-  providers: [],
+  providers: [PostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

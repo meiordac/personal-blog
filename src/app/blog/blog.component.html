@@ -1,7 +1,4 @@
-<md-grid-list cols="7"  *ngFor="let post of posts">
-   <md-grid-tile></md-grid-tile>
-
-   <md-grid-tile [colspan]=5 [rowspan]=3>     
+<div class="content" *ngFor="let post of posts" >   
      <md-card >
       <md-card-header>
       <img md-card-avatar src={{post.avatar}}>
@@ -13,12 +10,8 @@
       <p>{{post.content}}</p>
    </md-card-content>
       <md-card-actions>
-        <button md-button>SEE MORE</button>
-        <button md-button>SHARE</button>
+        <button md-raised-button (click)="gotoDetail(post)">SEE MORE</button>
    </md-card-actions>
-
    </md-card>
-   </md-grid-tile>
-
-   <md-grid-tile></md-grid-tile>
-</md-grid-list>
+   <br/>
+ </div>

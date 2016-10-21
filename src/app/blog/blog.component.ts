@@ -1,26 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router,ActivatedRoute, Params }   from '@angular/router';
+import { Location }                 from '@angular/common';
+
 import {Post} from '../post'
-
-const POSTS: Post[] = [
-  {
-    id: 1,
-    title: "hello word",
-    content: "this is a test",
-    author: "Matias",
-    image: "assets/img/coffee.jpg",
-    avatar: "assets/img/co2.jpg"
-    
-  },
-  {
-    id: 2,
-    title: "I love angular",
-    content: "Who doesn't? ",
-    author: "Matias",
-    image: "assets/img/road.jpg",
-    avatar: "assets/img/co1.jpg"
-  }
-];
-
+import {PostService} from '../post.service'
 
 @Component({
   selector: 'app-blog',
@@ -29,11 +12,23 @@ const POSTS: Post[] = [
 })
 export class BlogComponent implements OnInit {
 
-  posts= POSTS; 
+  posts: Post[]; 
 
-  constructor() { }
+  constructor(private postService: PostService,
+    private router: Router,
+    private location: Location) { }
+
+  gotoDetail(post: Post): void {
+    let link = ['/detail', post.id];
+    this.router.navigate(link);
+}
+
+  getPosts(): void{
+    this.postService.getPosts().then(posts=>this.posts=posts);;
+  }
 
   ngOnInit() {
+    this.getPosts();
   }
 
 }
