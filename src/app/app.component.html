@@ -3,14 +3,16 @@
   <md-sidenav #sidenav mode="side" class="app-sidenav">
 <md-nav-list>
    <a md-list-item href={{github}} > <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i></span>  </a>
-   <a md-list-item href={{linkedin}}>   <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i></span> </a>
-   <a md-list-item href={{stackoverflow}}> <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-stack-overflow fa-stack-1x fa-inverse"></i></span> </a>
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fa fa-github fa-stack-1x fa-inverse"></i></span>  </a>
+   <a md-list-item href={{linkedin}}>   
+     <span class="fa-stack fa-lg">
+       <i class="fa fa-circle fa-stack-2x"></i>
+       <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i></span> </a>
+   <a md-list-item href={{stackoverflow}}> 
+     <span class="fa-stack fa-lg">
+       <i class="fa fa-circle fa-stack-2x"></i>
+       <i class="fa fa-stack-overflow fa-stack-1x fa-inverse"></i></span> </a>
 </md-nav-list>
 
   </md-sidenav>
@@ -27,33 +29,7 @@
   </md-toolbar>
 
   <div class="app-content">  
-
-<md-grid-list cols="7"  *ngFor="let post of posts">
-   <md-grid-tile></md-grid-tile>
-
-   <md-grid-tile [colspan]=5 [rowspan]=3>     
-     <md-card >
-      <md-card-header>
-      <img md-card-avatar src={{post.avatar}}>
-      <md-card-title>{{post.title}}</md-card-title>
-      <md-card-subtitle> {{post.author}}</md-card-subtitle>
-      </md-card-header>
-      <img md-card-image src={{post.image}}>
-   <md-card-content>
-      <p>{{post.content}}</p>
-   </md-card-content>
-      <md-card-actions>
-        <button md-button>SEE MORE</button>
-        <button md-button>SHARE</button>
-   </md-card-actions>
-
-   </md-card>
-   </md-grid-tile>
-
-   <md-grid-tile></md-grid-tile>
-</md-grid-list>
-
-
+    <app-blog></app-blog>
   </div>
 
 </md-sidenav-layout>
