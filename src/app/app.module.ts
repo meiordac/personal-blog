@@ -9,12 +9,14 @@ import { AppComponent } from './app.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { BlogComponent } from './blog/blog.component'
 import {PostService} from './post.service'
+import {NewlinesPipe} from './newline.pipe'
 
 @NgModule({
   declarations: [
     AppComponent,
     PostDetailComponent,
-    BlogComponent
+    BlogComponent, 
+    NewlinesPipe
   ],
   imports: [
     MaterialModule.forRoot(),

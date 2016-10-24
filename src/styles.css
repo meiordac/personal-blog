@@ -1,6 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import '~@angular/material/core/theming/prebuilt/indigo-pink.css';
 body {
   margin: 0;
+  font-family: Roboto;
 }
 
+a {
+	text-decoration: none;
+	color: #3498db;
+}
+
+	a:hover {
+		color: #2980b9;
+	}

@@ -5,4 +5,5 @@ export class Post {
   author: string;
   image: string;
   avatar: string;
+  published_at: Date;
 }
