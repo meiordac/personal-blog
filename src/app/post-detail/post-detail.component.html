@@ -10,7 +10,8 @@
       <span [innerHTML]="post.content | newlines"></span>
    </md-card-content>
       <md-card-actions>
-        <button md-raised-button (click)="goBack()">BACK</button>
+        <button md-raised-button (click)="linkedInShare(post)"><i class='fa fa-linkedin'></i> SHARE </button>
+        <button md-raised-button (click)="goBack()">BACK</button>    
    </md-card-actions>
    </md-card>
    <br/>

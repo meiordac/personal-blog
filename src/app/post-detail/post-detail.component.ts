@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Params }   from '@angular/router';
+import { Router, ActivatedRoute, Params }   from '@angular/router';
 import { Location }                 from '@angular/common';
 
 import {Post} from '../post'
@@ -13,15 +13,25 @@ import {PostService} from '../post.service'
 
 
 export class PostDetailComponent implements OnInit {
-
+  
   post: Post;
+ 
+  //LINKEDIN DOCS https://developer.linkedin.com/docs/share-on-linkedin#!
+  private linkedInShare(post: Post) {
+        let shareUrl = 'http://www.linkedin.com/shareArticle?url=' + window.location;    
+        let  windowAttr='width=' + 500 + ', height=' + 400;
+        shareUrl += "&title=" + post.title;
+        shareUrl += "&summary=" + post.content.slice(0,100) + '...';
+        window.open(shareUrl, 'newwindow', windowAttr);
+      }
 
   goBack(): void {
-  this.location.back();
-}
+    this.location.back();
+  }
 
   constructor(
     private postService: PostService,
+    private router: Router,
     private route: ActivatedRoute,
     private location: Location) { }
 
