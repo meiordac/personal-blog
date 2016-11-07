@@ -1,8 +1,8 @@
-export class Post {
+export class Comment {
   id: number;
-  title: string;
+  id_post: number;
   content: string;
   author: string;
-  image: string;
   published_at: Date;
+  avatar: string;
 }

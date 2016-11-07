@@ -1,0 +1,15 @@
+<md-card *ngFor="let comment of comments" >
+    <md-card-header>
+      <img md-card-avatar src={{comment.avatar}}>
+      <md-card-title>{{comment.author}} </md-card-title>
+      <md-card-subtitle> {{comment.published_at | date}} </md-card-subtitle>
+      </md-card-header>
+   <md-card-content>
+     <p>{{comment.content}}</p>
+   </md-card-content>
+         <md-card-actions>
+        <button md-raised-button><i class='fa fa-thumbs-up'></i> </button>
+        <button md-raised-button><i class='fa fa-thumbs-down'></i> </button>
+   </md-card-actions>
+</md-card>
+<br/>

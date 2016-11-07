@@ -11,6 +11,6 @@ export class PostService {
   } 
 
   getPost(id : number): Promise<Post> {
-    return this.getPosts().then(x => x.find(post => post.id==id))
+    return this.getPosts().then(x => x.find(post => post.id==id));
   }
 }

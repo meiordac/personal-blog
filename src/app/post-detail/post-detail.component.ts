@@ -3,7 +3,9 @@ import { Router, ActivatedRoute, Params }   from '@angular/router';
 import { Location }                 from '@angular/common';
 
 import {Post} from '../post'
+import {Comment} from '../comment'
 import {PostService} from '../post.service'
+import {CommentService} from '../comment.service'
 
 @Component({
   selector: 'app-post-detail',
@@ -15,6 +17,7 @@ import {PostService} from '../post.service'
 export class PostDetailComponent implements OnInit {
   
   post: Post;
+  comments: Comment[];
  
   //LINKEDIN DOCS https://developer.linkedin.com/docs/share-on-linkedin#!
   private linkedInShare(post: Post) {
@@ -31,6 +34,7 @@ export class PostDetailComponent implements OnInit {
 
   constructor(
     private postService: PostService,
+    private commentService: CommentService,
     private router: Router,
     private route: ActivatedRoute,
     private location: Location) { }
@@ -39,6 +43,7 @@ export class PostDetailComponent implements OnInit {
       this.route.params.forEach((params: Params) => {
         let id = +params['id'];
         this.postService.getPost(id).then(post => this.post = post);
+        this.commentService.getComments(id).then(comments => this.comments = comments);
   });
 }
 }

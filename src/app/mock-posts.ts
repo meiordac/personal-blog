@@ -16,7 +16,6 @@ export const POSTS: Post[] = [
     Overall my experience with Angular and MD has been great, TypeScript greatly improves the experience of writing code (work especially well with Visual Studio Code) . Angular 2 is also way faster than the first version but still has a long way to go in order to become the default framework for web development but it's really promising and I think it's going in the right path. `,
     author: "Matias Iordache",
     image: "assets/img/angular2.png",
-    avatar: "assets/img/matias.jpg",
     published_at: new Date(2016, 10, 24)
     
   }

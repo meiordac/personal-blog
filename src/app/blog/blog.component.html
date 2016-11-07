@@ -1,7 +1,6 @@
 <div class="content" *ngFor="let post of posts" >   
      <md-card >
       <md-card-header>
-      <img md-card-avatar src={{post.avatar}}>
       <md-card-title>{{post.title}}</md-card-title>
       <md-card-subtitle> by {{post.author}} on {{post.published_at | date}}</md-card-subtitle>
       </md-card-header>
