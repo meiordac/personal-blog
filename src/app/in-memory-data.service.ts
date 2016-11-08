@@ -1,7 +1,9 @@
-import {Post} from './post'
+import { InMemoryDbService } from 'angular-in-memory-web-api';
 
-export const POSTS: Post[] = [
-  {
+export class InMemoryDataService implements InMemoryDbService {
+  createDb() {
+    let posts = [
+      {
     id: 1,
     title: "Angular and Material Design - My experience",
     content:  `
@@ -17,6 +19,32 @@ export const POSTS: Post[] = [
     author: "Matias Iordache",
     image: "assets/img/angular2.png",
     published_at: new Date(2016, 10, 24)
+  }
+];
+
+
+    let comments = [
+      {
+  id: 1,
+  id_post: 1,
+  content: 'hello this is my first comment',
+  author: "Matias Iordache",
+  published_at: new Date(2016, 11, 7),
+  avatar: "assets/img/matias.jpg"
+
+},
+
+  {
+  id: 2,
+  id_post: 1,
+  content: 'now this is my second comment',
+  author: "Matias Iordache",
+  published_at: new Date(2016, 10, 7),
+  avatar: "assets/img/matias.jpg"
     
   }
 ];
+
+    return {posts, comments};
+  }
+}
