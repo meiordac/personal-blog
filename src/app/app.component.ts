@@ -11,4 +11,5 @@ export class AppComponent {
   github= 'https://github.com/meiordac/';
   linkedin= 'https://www.linkedin.com/in/matiasiordache';
   stackoverflow= 'http://stackoverflow.com/users/2373657/matias-iordache';
+  personal= 'https://meiordac.github.io/';
 }

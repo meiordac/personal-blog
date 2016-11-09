@@ -24,8 +24,21 @@ export class BlogComponent implements OnInit {
 }
 
   getPosts(): void{
-    this.postService.getPosts().then(posts => this.posts = posts);
+    this.postService.getPosts().then(posts =>
+     { 
+       this.posts = posts;
+       this.posts= this.posts.sort(this.compare);
+      });
   }
+
+  //add compare to sort posts by date
+  compare(a : Post,b : Post) {
+  if (a.published_at > b.published_at)
+    return -1;
+  if (a.published_at < b.published_at)
+    return 1;
+  return 0;
+}
 
   ngOnInit() {
     this.getPosts();
