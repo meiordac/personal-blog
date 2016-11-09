@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+import {CommentService} from '../comment.service'
+import {Comment } from '../comment'
+
 @Component({
   selector: 'app-comment',
   templateUrl: './comment.component.html',
@@ -7,10 +10,22 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CommentComponent implements OnInit {
   @Input() comments: Comment[];
-  
-  constructor() { }
+
+  constructor(private commentService: CommentService) { }
 
   ngOnInit() {
+  }
+
+  addComment(content : String) : void
+  {
+    console.log(content);
+    if (!content) { return;}
+
+    this.commentService.create(content)
+    .then(comment => 
+    {
+      this.comments.push(comment);
+      });
   }
 
 }
