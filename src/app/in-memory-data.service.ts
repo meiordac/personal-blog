@@ -24,19 +24,13 @@ export class InMemoryDataService implements InMemoryDbService {
     id: 2,
     title: "Angular CLI",
     content:  `
-    Angular CLI is based on the <a href='https://https://ember-cli.com/'> Ember CLI </a> project and is still a work in progress which means it's under active development, indeed it's still in beta and new versions bring many new functionalities and you may need to migrate between versions in order to take advantage of the benefits of the new versions (if you have a previous version installed). 
+    Angular CLI is a command line interface for Angular based on the <a href='https://https://ember-cli.com/'> Ember CLI </a> project and is still a work in progress which means it's under active development, indeed it's still in beta and new versions bring many new functionalities and you may need to migrate between versions in order to take advantage of the benefits of the new versions (if you have a previous version installed). 
+    
+    <a href='https://github.com/angular/angular-cli'> Angular CLI </a> makes the whole process of creating a new Angular app a lot faster and easier. It helps you to create a new project just with a single command like ng new-project which creates an application that works out of the box following the best practices and then you just have to serve your new project with ng-serve, the scaffold commands which would help you generate new components with a simple ng generate you can create: routes, pipes, components, and services.
+    
+    Then to run your test cases is as simple as ng test, and to deploy in github pages you just have to use the following command ng github-pages:deploy --message "Optional commit message". It makes increadibly easy to develop and deploy new applications in this promising new framework supported by Google.
 
-   <a href='https://github.com/angular/angular-cli'> Angular CLI </a> makes the whole process of creating a new Angular app a lot faster and easier. It helps you to create a new project just with a single command like ng new-project and then you just have to serve your new project with ng-serve, the scaffold command which would help you generate new components, pipes, and services are the following:
-   <ul><li> Component	ng g component my-new-component </li>
-   <li> Directive	ng g directive my-new-directive </li>
-   <li> Pipe	ng g pipe my-new-pipe </li>
-   <li> Service	ng g service my-new-service </li>
-   <li> Class	ng g class my-new-class </li>
-   <li> Interface	ng g interface my-new-interface </li>
-   <li> Enum	ng g enum my-new-enum </li>
-   <li> Module	ng g module my-module </li></ul>
-
-   Then to run your test cases is as simple as ng test, and to deploy in github pages you just have to use the following command ng github-pages:deploy --message "Optional commit message". It makes increadibly easy to develop and deploy new applications in this promising new framework supported by Google.
+   If you want to see more more about the CLI Mike Brocchi did a <a href='https://www.youtube.com/watch?v=wHZe6gGI5RY'> great talk at ng-conf </a> about CLI capabilities, I highly recommend to watch it, to get a broad overview.
 
     `,
     author: "Matias Iordache",

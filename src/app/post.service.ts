@@ -3,7 +3,7 @@ import { Headers, Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import {Post} from './post';
+import {Post} from './shared/post';
 
 @Injectable()
 export class PostService {

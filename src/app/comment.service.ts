@@ -3,7 +3,7 @@ import { Headers, Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import {Comment} from './comment'
+import {Comment} from './shared/comment'
 
 @Injectable()
 export class CommentService {
