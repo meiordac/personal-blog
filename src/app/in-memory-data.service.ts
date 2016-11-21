@@ -36,6 +36,18 @@ export class InMemoryDataService implements InMemoryDbService {
     author: "Matias Iordache",
     image: "assets/img/angular-2-cli.png",
     published_at: new Date(2016, 10, 9)
+  },
+     {
+    id: 3,
+    title: "Integrating Angular and Visual Studio",
+    content:  `
+    As many developers, I found Visual Studio 2015 to be one of the best Integrated Development Enviroments (IDE) if not the best. It integrates well with TypeScript and in the last versions it's also possible to integrate Angular 2 with Visual Studio 2015. First according to the Angular website itself we should "Verify that you are running node version 4.6.x or greater, and npm 3.x.x or greater by running node -v and npm -v in a terminal/console window. Older versions produce errors.".
+
+    Also Visual Studio 2015 Update 3 is the minimum requirement for developing Angular 2 applications, according to the people from Angular earlier versions do not follow the best practices for developing with TypeScript. Also they recommend to install TypeScript 2, VS Update 3 includes it's own version of TypeScript. After all this we can find some template as a Nuget to generate all the boiler plate required to start developing a Angular app (which can be a lot). There's some template projects for example a Sample Angular 2 and Mvc 5 application. (with bootstrap, typescript and service) developed by Microsoft itself
+    `,
+    author: "Matias Iordache",
+    image: "assets/img/angular-2-cli.png",
+    published_at: new Date(2016, 10, 10)
   }
 ];
 
