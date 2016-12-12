@@ -46,7 +46,7 @@ export class InMemoryDataService implements InMemoryDbService {
     Also Visual Studio 2015 Update 3 is the minimum requirement for developing Angular 2 applications, according to the people from Angular earlier versions do not follow the best practices for developing with TypeScript. Also they recommend to install TypeScript 2, VS Update 3 includes it's own version of TypeScript. After all this we can find some template as a Nuget to generate all the boiler plate required to start developing a Angular app (which can be a lot). There's some template projects for example a Sample Angular 2 and Mvc 5 application. (with bootstrap, typescript and service) developed by Microsoft itself
     `,
     author: "Matias Iordache",
-    image: "assets/img/angular-2-cli.png",
+    image: "assets/img/vslogo.jpg",
     published_at: new Date(2016, 10, 10)
   }
 ];

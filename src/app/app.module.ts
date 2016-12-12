@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { RouterModule }   from '@angular/router';
+
 // Imports for loading & configuring the in-memory web api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
@@ -15,6 +16,8 @@ import {PostService} from './post.service';
 import {CommentService} from './comment.service';
 import {NewlinesPipe} from './newline.pipe';
 import { CommentComponent } from './comment/comment.component';
+
+import 'hammerjs';
 
 @NgModule({
   declarations: [
