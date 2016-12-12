@@ -9,7 +9,7 @@ import {Comment} from './shared/comment'
 export class CommentService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  private commentsURL = 'app/comments';  // URL to web api
+  private commentsURL = 'https://personal-blog-api.herokuapp.com/comments.json';  // URL to web api
   
   constructor(private http: Http) { }
   
@@ -21,7 +21,7 @@ export class CommentService {
   getAllComments(): Promise<Comment[]> {
          return this.http.get(this.commentsURL)
                .toPromise()
-               .then(response => response.json().data as Comment[])
+               .then(response => response.json() as Comment[])
                .catch(this.handleError);
   } 
 

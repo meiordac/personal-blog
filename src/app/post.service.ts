@@ -7,8 +7,8 @@ import {Post} from './shared/post';
 
 @Injectable()
 export class PostService {
-  
-  private postsURL = 'app/posts';  // URL to web api
+
+  private postsURL = 'https://personal-blog-api.herokuapp.com/posts.json'; // URL to web api
   
   constructor(private http: Http) { }
   
@@ -20,7 +20,7 @@ export class PostService {
   getPosts(): Promise<Post[]> {
         return this.http.get(this.postsURL)
                .toPromise()
-               .then(response => response.json().data as Post[])
+               .then(response => response.json() as Post[])
                .catch(this.handleError);
   } 
 
