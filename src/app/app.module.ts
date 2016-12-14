@@ -4,23 +4,23 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { RouterModule }   from '@angular/router';
+import 'hammerjs';
 
 import { AppComponent } from './app.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { BlogComponent } from './blog/blog.component';
 import {PostService} from './post.service';
 import {CommentService} from './comment.service';
-import {NewlinesPipe} from './newline.pipe';
+import {NewlinesPipe} from './shared/newline.pipe';
 import { CommentComponent } from './comment/comment.component';
-
-import 'hammerjs';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostDetailComponent,
     BlogComponent, 
-    NewlinesPipe, CommentComponent
+    NewlinesPipe, CommentComponent, LoginComponent
   ],
   imports: [
     MaterialModule.forRoot(),
@@ -35,6 +35,10 @@ import 'hammerjs';
       {
         path: 'detail/:id',
         component: PostDetailComponent
+      },
+      {
+        path: 'login',
+        component: LoginComponent
       }
     ])
   ],

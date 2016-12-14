@@ -21,7 +21,7 @@ export class CommentComponent implements OnInit {
     console.log(content);
     if (!content) { return;}
 
-    this.commentService.create(content)
+    this.commentService.create(content, 1)
     .then(comment => 
     {
       this.comments.push(comment);

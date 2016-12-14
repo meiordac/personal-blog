@@ -23,6 +23,11 @@ export class BlogComponent implements OnInit {
     this.router.navigate(link);
 }
 
+  gotoLogin(): void {
+    let link = ['/login'];
+    this.router.navigate(link);
+}
+
   getPosts(): void{
     this.postService.getPosts().then(posts =>
      { 

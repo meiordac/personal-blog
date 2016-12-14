@@ -9,7 +9,7 @@ import {Comment} from './shared/comment'
 export class CommentService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  private commentsURL = 'https://personal-blog-api.herokuapp.com/comments.json';  // URL to web api
+  private commentsURL = 'https://personal-blog-api.herokuapp.com/comments';  // URL to web api
   
   constructor(private http: Http) { }
   
@@ -31,12 +31,13 @@ export class CommentService {
 
   }
 
-    create(content : String): Promise<Comment> {
-     return this.http
-     .post(this.commentsURL, JSON.stringify({content: content, author: "Matias Iordache", published_at: new Date(), avatar: "assets/img/matias.jpg"}), {headers: this.headers})
-     .toPromise()
-     .then(res => res.json().data)
-     .catch(this.handleError);
-
+    create(content : String, id_post: Number): Promise<Comment> {
+      var new_post=JSON.stringify({ id_post: id_post, content: content, author: "Matias Iordache", published_at: new Date(), avatar: "assets/img/matias.jpg"});
+      console.log(new_post);
+      return this.http
+          .post(this.commentsURL, new_post, {headers: this.headers})
+          .toPromise()
+          .then(res => res.json())
+          .catch(this.handleError);
   }
 }
