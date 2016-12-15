@@ -9,8 +9,9 @@ import 'hammerjs';
 import { AppComponent } from './app.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { BlogComponent } from './blog/blog.component';
-import {PostService} from './post.service';
-import {CommentService} from './comment.service';
+import {PostService} from './services/post.service';
+import {CommentService} from './services/comment.service';
+import {UserService} from './services/user.service';
 import {NewlinesPipe} from './shared/newline.pipe';
 import { CommentComponent } from './comment/comment.component';
 import { LoginComponent } from './login/login.component';
@@ -42,7 +43,7 @@ import { LoginComponent } from './login/login.component';
       }
     ])
   ],
-  providers: [PostService, CommentService],
+  providers: [PostService, CommentService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

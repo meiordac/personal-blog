@@ -4,8 +4,8 @@ import { Location }                 from '@angular/common';
 
 import {Post} from '../shared/post'
 import {Comment} from '../shared/comment'
-import {PostService} from '../post.service'
-import {CommentService} from '../comment.service'
+import {PostService} from '../services/post.service'
+import {CommentService} from '../services/comment.service'
 
 @Component({
   selector: 'app-post-detail',
@@ -43,7 +43,6 @@ export class PostDetailComponent implements OnInit {
       this.route.params.forEach((params: Params) => {
         let id = +params['id'];
         this.postService.getPost(id).then(post => this.post = post);
-        console.log( this.commentService.getComments(id));
         this.commentService.getComments(id).then(comments => this.comments = comments);
 
   });

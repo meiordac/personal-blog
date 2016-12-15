@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import {CommentService} from '../comment.service'
+import {CommentService} from '../services/comment.service'
 import {Comment } from '../shared/comment'
 
 @Component({

@@ -1,9 +1,11 @@
 <md-card class="demo-card demo-basic">
   <md-toolbar color="primary">Basic</md-toolbar>
   <md-card-content>
-    <form>
-        <md-input placeholder="Login" style="width: 100%"></md-input>
-        <md-input placeholder="Password" style="width: 100%"></md-input>
+    <form (ngSubmit)="login()" #loginForm="ngForm">
+        <md-input placeholder="Email" style="width: 100%" name="email" [(ngModel)]="model.email" #username="ngModel" required></md-input>
+        <md-input placeholder="Password" type="password" style="width: 100%" name="password" [(ngModel)]="model.password" #password="ngModel" required ></md-input>
+        <button md-raised-button [disabled]="!loginForm.form.valid"> Login </button>
     </form>
+    <div *ngIf="error" class="alert alert-danger">{{error}}</div>
   </md-card-content>
 </md-card>

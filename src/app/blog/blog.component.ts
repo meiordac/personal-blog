@@ -3,7 +3,7 @@ import { Router,ActivatedRoute, Params }   from '@angular/router';
 import { Location }                 from '@angular/common';
 
 import {Post} from '../shared/post'
-import {PostService} from '../post.service'
+import {PostService} from '../services/post.service'
 
 @Component({
   selector: 'app-blog',
