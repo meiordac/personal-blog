@@ -28,7 +28,6 @@ export class CommentService {
                .catch(this.handleError);
   } 
 
-
   getComments(id : number): Promise<Comment[]> {
      return this.getAllComments().then(x => x.filter(comment => comment.id_post==id));
 

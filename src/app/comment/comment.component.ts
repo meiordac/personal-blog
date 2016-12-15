@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import {CommentService} from '../services/comment.service'
 import {Comment } from '../shared/comment'
+import {Post} from '../shared/post'
 
 @Component({
   selector: 'app-comment',
@@ -10,6 +11,7 @@ import {Comment } from '../shared/comment'
 })
 export class CommentComponent implements OnInit {
   @Input() comments: Comment[];
+  @Input() post: Post;
 
   constructor(private commentService: CommentService) { }
 
@@ -21,7 +23,7 @@ export class CommentComponent implements OnInit {
     console.log(content);
     if (!content) { return;}
 
-    this.commentService.create(content, 1)
+    this.commentService.create(content, this.post.id)
     .then(comment => 
     {
       this.comments.push(comment);
