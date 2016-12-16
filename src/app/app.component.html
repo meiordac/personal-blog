@@ -22,7 +22,8 @@
     </button>
     {{title}}
     <span class="app-toolbar-filler"></span>
-    <button md-raised-button [routerLink]="['/login']">Sign in</button>
+    <div *ngIf="user"> <button md-button (click)="logout()">Log out</button> </div>
+    <div *ngIf="!user"> <button md-button [routerLink]="['/register']" >Register</button> <button md-button [routerLink]="['/login']">Log in</button> </div>
   </md-toolbar>
 <br/>
 <router-outlet></router-outlet>

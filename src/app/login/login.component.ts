@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, Params }   from '@angular/router';
 import {UserService} from '../services/user.service'
 
 @Component({
@@ -10,7 +11,7 @@ export class LoginComponent implements OnInit {
 
   model: any = {};
   error: string;
-  constructor( private userService: UserService) { }
+  constructor( private router: Router, private userService: UserService) { }
 
   ngOnInit() {
   }
@@ -22,13 +23,11 @@ export class LoginComponent implements OnInit {
                 if (result === true) {
                     // login successful
                     console.log(localStorage.getItem('currentUser'));
+                    this.router.navigateByUrl('/');
                 } else {
                     // login failed
                     this.error="Login error";
                 }
             });;
   }
-
-
-
 }

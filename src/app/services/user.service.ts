@@ -7,8 +7,8 @@ import {User } from '../shared/user'
 @Injectable()
 export class UserService {
   public token: string;
-  //private authenticationURL = 'https://personal-blog-api.herokuapp.com/posts.json'; // URL to web api
-  private authenticationURL = 'http://localhost:3000/authenticate';  // URL to web api
+  //private apiURL='https://personal-blog-api.herokuapp.com';
+  private apiURL='http://localhost:3000';
   
   constructor(private http: Http) {        
     // set token if saved in local storage
@@ -22,7 +22,7 @@ export class UserService {
   
   login(email : string, password : string) : Observable<boolean> {
       let headers = new Headers({'Content-Type': 'application/json'});
-      return this.http.post(this.authenticationURL, 
+      return this.http.post(this.apiURL + '/authenticate', 
         JSON.stringify({ email, password }), { headers }).map((response: Response) => {
                 // login successful if there's a jwt token in the response
                 let token = response.json() && response.json().auth_token;
@@ -42,7 +42,12 @@ export class UserService {
             });
   } 
 
-    logout() {
-        return null;
-  } 
+  logout(){
+    this.token=null;
+    localStorage.removeItem('currentUser');
+  }
+
+  create(user: User){
+    return this.http.post(this.apiURL + 'users', user).map((response: Response) => response.json());
+  }
 }

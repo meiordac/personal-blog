@@ -1,11 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, Output, OnInit } from '@angular/core';
+
+import {User} from './shared/user'
+import {UserService} from './services/user.service'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  user: User;
+  private sub: any;
+
+  constructor(private userService: UserService) {}
+    ngOnInit() {
+        this.user = JSON.parse(localStorage.getItem('currentUser'));
+    }
+    
+    logout(){
+      this.userService.logout();
+      this.user = null;
+    }
+
   title = 'Blog!';
   subheading = 'In Angular 2';
   github= 'https://github.com/meiordac/';

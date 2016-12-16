@@ -15,13 +15,14 @@ import {UserService} from './services/user.service';
 import {NewlinesPipe} from './shared/newline.pipe';
 import { CommentComponent } from './comment/comment.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostDetailComponent,
     BlogComponent, 
-    NewlinesPipe, CommentComponent, LoginComponent
+    NewlinesPipe, CommentComponent, LoginComponent, RegisterComponent
   ],
   imports: [
     MaterialModule.forRoot(),
@@ -40,6 +41,10 @@ import { LoginComponent } from './login/login.component';
       {
         path: 'login',
         component: LoginComponent
+      },
+      {
+        path: 'register',
+        component: RegisterComponent
       }
     ])
   ],
