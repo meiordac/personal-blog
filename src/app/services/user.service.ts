@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, Response } from '@angular/http';
 import { Observable } from 'rxjs';
-
+import { Headers, Http, RequestOptions, Response } from '@angular/http';
 import {User } from '../shared/user'
 
 @Injectable()
@@ -48,6 +47,12 @@ export class UserService {
   }
 
   create(user: User){
-    return this.http.post(this.apiURL + 'users', user).map((response: Response) => response.json());
+  
+    // add authorization header with jwt token and application/json header so otherwise it wouldnt let me create comments!
+    let headers = new Headers({ 'Content-Type': 'application/json'});
+    let options = new RequestOptions({ headers: headers });
+    console.log(user);
+    return this.http.post(this.apiURL + '/users', user, options)
+    .map((response: Response) => response.json());
   }
 }

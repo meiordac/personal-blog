@@ -17,19 +17,18 @@ export class AddPostComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  model : Post;
+  
+  model: any = {};
 
     // TODO: Remove this when we're done
-  get diagnostic() { return JSON.stringify(this.model); }
+  diagnostic() { return JSON.stringify(this.model); }
 
   
-  addComment(content : String) : void
+  addPost() : void
   {
-    console.log(content);
-    if (!content) { return;}
+    console.log(this.model.content);
 
-    this.postService.create(content)
+    this.postService.create(this.model.title,this.model.content, "Matias Iordache",this.model.image )
     .subscribe(post => 
     {
       console.log(post);

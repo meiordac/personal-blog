@@ -1,21 +1,11 @@
 <div class="container">
     <h1>Post Form</h1>
     <form>
-      <div class="form-group">
-        <label for="title">Title</label>
-        <input type="text" class="form-control" id="title" required [(ngModel)]="model.title" name="title">
-        TODO: remove this: {{model.title}}
-      </div>
-      <div class="form-group">
-        <label for="content">Content</label>
-        <input type="text" class="form-control" id="content" [(ngModel)]="model.content" name="content">
-        TODO: remove this: {{model.content}}
-      </div>
-      <div class="form-group">
-        <label for="image">Image</label>
-        <input type="text" class="form-control" id="image" [(ngModel)]="model.image" name="image">
-        TODO: remove this: {{model.image}}
-      </div>
-      <button type="submit" class="btn btn-default" (click)="diagnostic()">Submit</button>
+      <md-input #title name="title" placeholder="Title" style="width: 90%" required [(ngModel)]="model.title"></md-input>
+      <md-input #content name="content" placeholder="Content" style="width: 90%" [(ngModel)]="model.content"></md-input>
+      <md-input #image name="image"  placeholder="Image" style="width: 90%" [(ngModel)]="model.image"></md-input>
+
+      <button md-button (click)="addPost()"> <i class="fa fa-check" aria-hidden="true"></i> </button>
+
     </form>
 </div>

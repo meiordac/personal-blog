@@ -38,12 +38,13 @@ export class PostService {
     return this.getPosts().map(x => x.find(post => post.id==id));
   }
 
-  create(content : String): Observable<Post> {
+  create(  title: String, content : String, author: String, image: String): Observable<Post> {
         // add authorization header with jwt token and application/json header so otherwise it wouldnt let me create comments!
         let headers = new Headers({ 'Authorization': 'Bearer ' + this.userService.token ,'Content-Type': 'application/json'});
         let options = new RequestOptions({ headers: headers });
 
-      var new_post=JSON.stringify({ content: content, author: "Matias Iordache", published_at: new Date(), avatar: "assets/img/matias.jpg" } );
+
+      var new_post=JSON.stringify({title: title, content: content, author: author, published_at: new Date(), avatar: image } );
       console.log(new_post);
       return this.http
           .post(this.postsURL, new_post, options)
