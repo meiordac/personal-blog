@@ -1,7 +1,7 @@
 import { Injectable }    from '@angular/core';
-import { Headers, Http, RequestOptions } from '@angular/http';
+import { Headers, Http, RequestOptions, Response } from '@angular/http';
 
-import 'rxjs/add/operator/toPromise';
+import { Observable }     from 'rxjs/Observable';
 import { UserService } from '../services/user.service';
 import {Post} from '../shared/post';
 
@@ -9,29 +9,45 @@ import {Post} from '../shared/post';
 export class PostService {
 
   //private postsURL = 'https://personal-blog-api.herokuapp.com/posts.json'; // URL to web api
-  private postsURL = 'http://localhost:3000/posts.json';  // URL to web api
+  private postsURL = 'http://localhost:3000/posts';  // URL to web api
 
   constructor(private http: Http, private userService: UserService) { }
   
-  private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // we are just gonna log the error in our console
-    return Promise.reject(error.message || error);
-}
+  private handleError (error: Response | any) {
+    // In a real world app, we might use a remote logging infrastructure
+    let errMsg: string;
+    if (error instanceof Response) {
+      const body = error.json() || '';
+      const err = body.error || JSON.stringify(body);
+      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+    } else {
+      errMsg = error.message ? error.message : error.toString();
+    }
+    console.error(errMsg);
+    return Observable.throw(errMsg);
+  }
 
-  getPosts(): Promise<Post[]> {
-        // add authorization header with jwt token
-        let headers = new Headers({ 'Authorization': 'Bearer ' + this.userService.token });
-        let options = new RequestOptions({ headers: headers });
+  getPosts(): Observable<Post[]> {
 
-        return this.http.get(this.postsURL,options)
-               .toPromise()
-               .then(response => response.json() as Post[])
+        return this.http.get(this.postsURL)
+               .map(response => response.json() as Post[])
                .catch(this.handleError);
   } 
 
-  getPost(id : number): Promise<Post> {
-    let headers = new Headers({ 'Authorization': 'Bearer ' + this.userService.token });
-    let options = new RequestOptions({ headers: headers });
-    return this.getPosts().then(x => x.find(post => post.id==id));
+  getPost(id : number): Observable<Post> {
+    return this.getPosts().map(x => x.find(post => post.id==id));
+  }
+
+  create(content : String): Observable<Post> {
+        // add authorization header with jwt token and application/json header so otherwise it wouldnt let me create comments!
+        let headers = new Headers({ 'Authorization': 'Bearer ' + this.userService.token ,'Content-Type': 'application/json'});
+        let options = new RequestOptions({ headers: headers });
+
+      var new_post=JSON.stringify({ content: content, author: "Matias Iordache", published_at: new Date(), avatar: "assets/img/matias.jpg" } );
+      console.log(new_post);
+      return this.http
+          .post(this.postsURL, new_post, options)
+          .map(res => res.json())
+          .catch(this.handleError);
   }
 }

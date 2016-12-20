@@ -16,13 +16,14 @@ import {NewlinesPipe} from './shared/newline.pipe';
 import { CommentComponent } from './comment/comment.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AddPostComponent } from './add-post/add-post.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostDetailComponent,
     BlogComponent, 
-    NewlinesPipe, CommentComponent, LoginComponent, RegisterComponent
+    NewlinesPipe, CommentComponent, LoginComponent, RegisterComponent, AddPostComponent
   ],
   imports: [
     MaterialModule.forRoot(),
@@ -37,6 +38,10 @@ import { RegisterComponent } from './register/register.component';
       {
         path: 'detail/:id',
         component: PostDetailComponent
+      },
+      {
+        path: 'addpost',
+        component: AddPostComponent
       },
       {
         path: 'login',

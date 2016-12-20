@@ -24,10 +24,11 @@ export class CommentComponent implements OnInit {
     if (!content) { return;}
 
     this.commentService.create(content, this.post.id)
-    .then(comment => 
+    .subscribe(comment => 
     {
       this.comments.push(comment);
-      });
+      }
+      );
   }
 
 }

@@ -16,7 +16,8 @@ export class BlogComponent implements OnInit {
 
   constructor(private postService: PostService,
     private router: Router,
-    private location: Location) { }
+    private location: Location) {
+     }
 
   gotoDetail(post: Post): void {
     let link = ['/detail', post.id];
@@ -29,7 +30,7 @@ export class BlogComponent implements OnInit {
 }
 
   getPosts(): void{
-    this.postService.getPosts().then(posts =>
+    this.postService.getPosts().subscribe(posts =>
      { 
        this.posts = posts;
        this.posts= this.posts.sort(this.compare);
