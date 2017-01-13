@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
                 if (result === true) {
                     // login successful
                     console.log(localStorage.getItem('currentUser'));
-                    this.router.navigateByUrl('/');
+                    this.router.navigate(['']);
                 } else {
                     // login failed
                     this.error="Login error";

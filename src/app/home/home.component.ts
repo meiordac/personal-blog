@@ -1,14 +1,14 @@
 import { Component, Output, OnInit } from '@angular/core';
 
-import { User } from './shared/user'
-import { UserService } from './services/user.service'
+import { User } from '../shared/user'
+import { UserService } from '../services/user.service'
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
-export class AppComponent implements OnInit {
+export class HomeComponent implements OnInit {
   user: User ;
   private sub: any;
 

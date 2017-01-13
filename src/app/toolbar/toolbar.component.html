@@ -1,0 +1,10 @@
+<md-toolbar color="primary">
+  <a class="app-icon-button" [routerLink]="['/']">
+      <i class="material-icons app-toolbar-menu">home</i>
+    </a> {{title}}
+  <span class="app-toolbar-filler"></span>
+  <div *ngIf="user"> <button md-button (click)="logout()">Log out</button> </div>
+  <div *ngIf="!user"> <button md-button [routerLink]="['/register']">Register</button>
+    <button md-button [routerLink]="['/login']">Log in</button> </div>
+</md-toolbar>
+<br/>
