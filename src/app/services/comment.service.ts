@@ -44,7 +44,9 @@ export class CommentService {
         let headers = new Headers({ 'Authorization': 'Bearer ' + this.userService.token ,'Content-Type': 'application/json'});
         let options = new RequestOptions({ headers: headers });
 
-      var new_comment=JSON.stringify({ id_post: id_post, content: content, author: "Matias Iordache", published_at: new Date(), avatar: "assets/img/matias.jpg" } );
+      var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      console.log(currentUser);  
+      var new_comment=JSON.stringify({ id_post: id_post, content: content, author: currentUser.name, published_at: new Date(), avatar: "assets/img/matias.jpg" } );
       console.log(new_comment);
       return this.http
           .post(this.commentsURL, new_comment, options)

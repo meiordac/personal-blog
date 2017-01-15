@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
+import {FlexLayoutModule} from '@angular/flex-layout';
+
 import 'hammerjs';
 
 import { AppComponent } from './app.component';
@@ -36,6 +38,7 @@ import { AuthGuard } from './guards/index';
   ],
   imports: [
     MaterialModule.forRoot(),
+    FlexLayoutModule.forRoot(),
     BrowserModule,
     FormsModule,
     HttpModule,

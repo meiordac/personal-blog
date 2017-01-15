@@ -15,7 +15,7 @@ export class UserService {
     this.token = currentUser && currentUser.token;
   }
 
-  private handleError (error: Response | any) {
+  private handleError(error: Response | any) {
     // In a real world app, we might use a remote logging infrastructure
     let errMsg: string;
     if (error instanceof Response) {
@@ -29,7 +29,7 @@ export class UserService {
     return Observable.throw(errMsg);
   }
 
-  
+
 
   login(email: string, password: string): Observable<boolean> {
     let headers = new Headers({ 'Content-Type': 'application/json' });
@@ -40,10 +40,8 @@ export class UserService {
         if (token) {
           // set token property
           this.token = token;
-
           // store username and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUser', JSON.stringify({ email: email, token: token }));
-
+          localStorage.setItem('currentUser', JSON.stringify({ name: response.json().name, email: email, token: token }));
           // return true to indicate successful login
           return true;
         } else {
@@ -63,8 +61,10 @@ export class UserService {
     // add authorization header with jwt token and application/json header so otherwise it wouldnt let me create comments!
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    console.log(user);
-    return this.http.post(this.apiURL + '/users', user, options)
+
+    var new_user = JSON.stringify({ name: user.name, email: user.email, password: user.password, password_confirmation: user.password_confirmation });
+    console.log(new_user);
+    return this.http.post(this.apiURL + '/users', new_user, options)
       .map((response: Response) => response.json());
   }
 

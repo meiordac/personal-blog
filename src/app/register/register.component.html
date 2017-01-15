@@ -9,6 +9,7 @@
 <div *ngIf="f.submitted && !email.valid" class="help-block">Email is required</div>
 
 <md-input type="password" placeholder="Password" class="form-control" style="width: 100%" name="password" [(ngModel)]="model.password" #password="ngModel" required></md-input>
+<md-input type="password" placeholder="Password Confirmation" class="form-control" style="width: 100%" name="password_confirmation" [(ngModel)]="model.password_confirmation" #password_confirmation="ngModel" required></md-input>
 
 <button md-raised-button [disabled]="!f.form.valid"> Register </button>
 <button md-raised-button [routerLink]="['/login']"> Cancel </button>

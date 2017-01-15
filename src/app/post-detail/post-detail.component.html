@@ -1,21 +1,29 @@
 <app-toolbar></app-toolbar>
-<div *ngIf="post">
-  <md-card>
-    <md-card-header>
-      <md-card-title>{{post.title}} </md-card-title>
-      <md-card-subtitle> by {{post.author}} on {{post.published_at | date}} </md-card-subtitle>
-      </md-card-header>
-      <img md-card-image src={{post.image}}>
-   <md-card-content>
-      <span [innerHTML]="post.content | newlines"></span>
-   </md-card-content>
-      <md-card-actions>
-        <button md-raised-button (click)="linkedInShare(post)"><i class='fa fa-share-alt'></i> </button>
-        <button md-raised-button (click)="goBack()"> BACK </button>
-      </md-card-actions>
-   </md-card>
-   <br/>
-<app-comment [post]="post" [comments]="comments"></app-comment>
 
+<div class="containerX">
+  <div [fxLayout]="row" class="content">
+    <div fxFlex="10"> </div>
+    <div fxFlex="80">
+      <div *ngIf="post">
+        <md-card>
+          <md-card-header>
+            <md-card-title>{{post.title}} </md-card-title>
+            <md-card-subtitle> by {{post.author}} on {{post.published_at | date}} </md-card-subtitle>
+          </md-card-header>
+          <img md-card-image src={{post.image}}>
+          <md-card-content>
+            <span [innerHTML]="post.content | newlines"></span>
+          </md-card-content>
+          <md-card-actions>
+            <button md-raised-button (click)="linkedInShare(post)"><i class='fa fa-share-alt'></i> </button>
+            <button md-raised-button (click)="goBack()"> BACK </button>
+          </md-card-actions>
+        </md-card>
+        <br/>
+        <app-comment [post]="post" [comments]="comments"></app-comment>
+
+      </div>
+    </div>
+    <div fxFlex> </div>
+  </div>
 </div>
-

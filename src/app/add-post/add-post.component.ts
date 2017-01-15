@@ -23,7 +23,9 @@ export class AddPostComponent implements OnInit {
   model: any = {};
 
   addPost(): void {
-    this.postService.create(this.model.title, this.model.content, "Matias Iordache", this.model.image)
+    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    console.log(currentUser);
+    this.postService.create(this.model.title, this.model.content, currentUser.name , this.model.image)
       .subscribe(post => {
         this.router.navigate(['']);
       });
