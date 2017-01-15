@@ -18,7 +18,6 @@ export class ToolbarComponent implements OnInit {
     this.user = this.userService.getUser();
   }
 
-
   logout() {
     this.userService.logout();
     this.user = null;

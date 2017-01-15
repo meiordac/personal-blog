@@ -1,11 +1,11 @@
-<div class="container">
-    <h1>Post Form</h1>
-    <form>
-      <md-input #title name="title" placeholder="Title" style="width: 90%" required [(ngModel)]="model.title"></md-input>
-      <md-input #content name="content" placeholder="Content" style="width: 90%" [(ngModel)]="model.content"></md-input>
+<app-toolbar></app-toolbar>
+<div class="app-content">
+    <h1>Create Post</h1>
+    <form #CreatePostForm="ngForm">
+      <md-input #title name="title" placeholder="Title" style="width: 90%" [(ngModel)]="model.title" required></md-input>
+      <md-input #content name="content" placeholder="Content" style="width: 90%" [(ngModel)]="model.content" required></md-input>
       <md-input #image name="image"  placeholder="Image" style="width: 90%" [(ngModel)]="model.image"></md-input>
 
-      <button md-button (click)="addPost()"> <i class="fa fa-check" aria-hidden="true"></i> </button>
-
+      <button md-raised-button (click)="addPost()" [disabled]="!CreatePostForm.form.valid"> Create</button>
     </form>
 </div>

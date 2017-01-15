@@ -1,12 +1,10 @@
 <app-toolbar></app-toolbar>
-<md-card>
-  <md-toolbar color="primary">Login</md-toolbar>
-  <md-card-content>
-    <form (ngSubmit)="login()" #loginForm="ngForm">
-        <md-input placeholder="Email" style="width: 100%" name="email" [(ngModel)]="model.email" #username="ngModel" required></md-input>
-        <md-input placeholder="Password" type="password" style="width: 100%" name="password" [(ngModel)]="model.password" #password="ngModel" required ></md-input>
-        <button md-raised-button [disabled]="!loginForm.form.valid"> Login </button>
-    </form>
-    <div *ngIf="error" class="alert alert-danger">{{error}}</div>
-  </md-card-content>
-</md-card>
+<div class="app-content">
+<h1>Login</h1>
+  <form (ngSubmit)="login()" #loginForm="ngForm">
+    <md-input placeholder="Email" style="width: 100%" name="email" [(ngModel)]="model.email" #username="ngModel" required></md-input>
+<md-input placeholder="Password" type="password" style="width: 100%" name="password" [(ngModel)]="model.password" #password="ngModel" required ></md-input>
+<button md-raised-button [disabled]="!loginForm.form.valid"> Login </button>
+</form>
+<div *ngIf="error" class="alert alert-danger">{{error}}</div>
+</div>

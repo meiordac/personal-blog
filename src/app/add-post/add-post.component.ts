@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
-import {Post} from '../shared/post'
-import {PostService} from '../services/post.service'
+import { Post } from '../shared/post'
+import { PostService } from '../services/post.service'
 
 @Component({
   selector: 'app-add-post',
@@ -12,26 +13,19 @@ import {PostService} from '../services/post.service'
 export class AddPostComponent implements OnInit {
 
   constructor(
+    private router: Router,
     private postService: PostService,
     private location: Location) { }
 
   ngOnInit() {
   }
-  
+
   model: any = {};
 
-    // TODO: Remove this when we're done
-  diagnostic() { return JSON.stringify(this.model); }
-
-  
-  addPost() : void
-  {
-    console.log(this.model.content);
-
-    this.postService.create(this.model.title,this.model.content, "Matias Iordache",this.model.image )
-    .subscribe(post => 
-    {
-      console.log(post);
+  addPost(): void {
+    this.postService.create(this.model.title, this.model.content, "Matias Iordache", this.model.image)
+      .subscribe(post => {
+        this.router.navigate(['']);
       });
   }
 }

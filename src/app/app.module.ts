@@ -9,7 +9,6 @@ import 'hammerjs';
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
 import { PostDetailComponent } from './post-detail/post-detail.component';
-import { BlogComponent } from './blog/blog.component';
 import { PostService } from './services/post.service';
 import { CommentService } from './services/comment.service';
 import { UserService } from './services/user.service';
@@ -20,14 +19,20 @@ import { RegisterComponent } from './register/register.component';
 import { AddPostComponent } from './add-post/add-post.component';
 import { HomeComponent } from './home/home.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { AuthGuard } from './guards/index';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PostDetailComponent,
-    BlogComponent,
-    NewlinesPipe, CommentComponent, LoginComponent, RegisterComponent, AddPostComponent, HomeComponent, ToolbarComponent
+    NewlinesPipe, 
+    CommentComponent, 
+    LoginComponent, 
+    RegisterComponent, 
+    AddPostComponent, 
+    HomeComponent, 
+    ToolbarComponent
   ],
   imports: [
     MaterialModule.forRoot(),
@@ -36,7 +41,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     HttpModule,
     routing
   ],
-  providers: [PostService, CommentService, UserService],
+  providers: [PostService, CommentService, UserService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
