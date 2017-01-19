@@ -11,11 +11,13 @@
       <md-card-subtitle> {{comment.published_at | date}} </md-card-subtitle>
       </md-card-header>
    <md-card-content>
+     <div class="postcomments">
      <p>{{comment.content}}</p>
+     </div>
    </md-card-content>
          <md-card-actions>
-        <button md-raised-button><i class='fa fa-thumbs-up'></i> </button>
-        <button md-raised-button><i class='fa fa-thumbs-down'></i> </button>
+        <button md-raised-button (click)="upvote(comment)"><i class='fa fa-thumbs-up'></i> </button>
+        <button md-raised-button (click)="downvote(comment)"><i class='fa fa-thumbs-down'></i> </button>
    </md-card-actions>
 </md-card>
 <br/>

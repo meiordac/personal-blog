@@ -10,10 +10,10 @@
             <md-card-title>{{post.title}} </md-card-title>
             <md-card-subtitle> by {{post.author}} on {{post.published_at | date}} </md-card-subtitle>
           </md-card-header>
-          <img md-card-image src={{post.image}}>
-          <md-card-content>
+          <md-card-content>   
             <span [innerHTML]="post.content | newlines"></span>
           </md-card-content>
+          <img md-card-image src={{post.image}}>
           <md-card-actions>
             <button md-raised-button (click)="linkedInShare(post)"><i class='fa fa-share-alt'></i> </button>
             <button md-raised-button (click)="goBack()"> BACK </button>

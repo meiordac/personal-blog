@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import {CommentService} from '../services/comment.service'
-import {Comment } from '../shared/comment'
-import {Post} from '../shared/post'
+import { CommentService } from '../services/comment.service'
+import { Comment } from '../shared/comment'
+import { Post } from '../shared/post'
 
 @Component({
   selector: 'app-comment',
@@ -18,17 +18,23 @@ export class CommentComponent implements OnInit {
   ngOnInit() {
   }
 
-  addComment(content : String) : void
-  {
+  addComment(content: String): void {
     console.log(content);
-    if (!content) { return;}
+    if (!content) { return; }
 
     this.commentService.create(content, this.post.id)
-    .subscribe(comment => 
-    {
-      this.comments.push(comment);
+      .subscribe(comment => {
+        this.comments.push(comment);
       }
       );
+  }
+
+  upvote(comment : Comment): void {
+    console.log(comment);
+  }
+
+  downvote(comment : Comment): void {
+    console.log(comment);
   }
 
 }

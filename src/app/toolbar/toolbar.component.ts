@@ -12,6 +12,7 @@ export class ToolbarComponent implements OnInit {
 
   user: User ;
   private sub: any;
+  title = 'Personal blog using Angular and Material design!';
 
   constructor(private userService: UserService) { }
   ngOnInit() {

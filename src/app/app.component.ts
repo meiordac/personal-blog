@@ -23,7 +23,6 @@ export class AppComponent implements OnInit {
     this.user = null;
   }
 
-  title = 'Blog!';
   subheading = 'In Angular 2';
   github = 'https://github.com/meiordac/';
   linkedin = 'https://www.linkedin.com/in/matiasiordache';
