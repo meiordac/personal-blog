@@ -30,9 +30,8 @@ export class CommentComponent implements OnInit {
   }
 
   upvote(comment : Comment): void {
-    console.log(comment);
+    this.commentService.upvote(comment).subscribe();
   }
-
   downvote(comment : Comment): void {
     console.log(comment);
   }

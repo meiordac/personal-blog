@@ -13,11 +13,14 @@
    <md-card-content>
      <div class="postcomments">
      <p>{{comment.content}}</p>
+     
      </div>
    </md-card-content>
          <md-card-actions>
-        <button md-raised-button (click)="upvote(comment)"><i class='fa fa-thumbs-up'></i> </button>
-        <button md-raised-button (click)="downvote(comment)"><i class='fa fa-thumbs-down'></i> </button>
+    <button md-raised-button (click)="upvote(comment)">         
+    <md-icon class="md-24">expand_less</md-icon>
+      {{comment.upvote}}
+    </button>
    </md-card-actions>
 </md-card>
 <br/>

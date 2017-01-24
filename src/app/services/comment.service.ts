@@ -9,8 +9,8 @@ import { Comment } from '../shared/comment'
 @Injectable()
 export class CommentService {
 
-  //private commentsURL = 'https://personal-blog-api.herokuapp.com/comments';  // URL to web api
-  private commentsURL = 'http://localhost:3000/comments';  // URL to web api
+  //private commentsURL = 'https://personal-blog-api.herokuapp.com/comments/';  // URL to web api
+  private commentsURL = 'http://localhost:3000/comments/';  // URL to web api
 
   constructor(private http: Http, private userService: UserService) { }
 
@@ -58,10 +58,10 @@ export class CommentService {
           // add authorization header with jwt token and application/json header so otherwise it wouldnt let me create comments!
     let headers = new Headers({ 'Authorization': 'Bearer ' + this.userService.token, 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    comment.upvotes += 1;
+    comment.upvote += 1;
 
     return this.http
-      .put(this.commentsURL, comment, options)
+      .put(this.commentsURL + comment.id , comment, options)
       .map(res => res.json())
       .catch(this.handleError);
 
@@ -71,7 +71,7 @@ export class CommentService {
           // add authorization header with jwt token and application/json header so otherwise it wouldnt let me create comments!
     let headers = new Headers({ 'Authorization': 'Bearer ' + this.userService.token, 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    comment.upvotes -= 1;
+    comment.upvote -= 1;
 
     return this.http
       .put(this.commentsURL, comment, options)
