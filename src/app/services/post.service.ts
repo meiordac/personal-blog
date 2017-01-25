@@ -8,8 +8,8 @@ import {Post} from '../shared/post';
 @Injectable()
 export class PostService {
 
-  //private postsURL = 'https://personal-blog-api.herokuapp.com/posts.json'; // URL to web api
-  private postsURL = 'http://localhost:3000/posts';  // URL to web api
+  private postsURL = 'https://personal-blog-api.herokuapp.com/posts/'; // URL to web api
+  //private postsURL = 'http://localhost:3000/posts/';  // URL to web api
 
   constructor(private http: Http, private userService: UserService) { }
   

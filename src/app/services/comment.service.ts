@@ -9,8 +9,8 @@ import { Comment } from '../shared/comment'
 @Injectable()
 export class CommentService {
 
-  //private commentsURL = 'https://personal-blog-api.herokuapp.com/comments/';  // URL to web api
-  private commentsURL = 'http://localhost:3000/comments/';  // URL to web api
+  private commentsURL = 'https://personal-blog-api.herokuapp.com/comments/';  // URL to web api
+  //private commentsURL = 'http://localhost:3000/comments/';  // URL to web api
 
   constructor(private http: Http, private userService: UserService) { }
 
