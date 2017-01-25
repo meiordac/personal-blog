@@ -45,9 +45,8 @@ export class CommentService {
     let options = new RequestOptions({ headers: headers });
 
     var currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    console.log(currentUser);
-    var new_comment = JSON.stringify({ id_post: id_post, content: content, author: currentUser.name, published_at: new Date(), avatar: currentUser.avatar });
-    console.log(new_comment);
+    var new_comment = JSON.stringify({id_user: currentUser.id, id_post: id_post, content: content, author: currentUser.name, published_at: new Date(), avatar: currentUser.avatar });
+  
     return this.http
       .post(this.commentsURL, new_comment, options)
       .map(res => res.json())

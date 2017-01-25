@@ -29,8 +29,6 @@ export class UserService {
     return Observable.throw(errMsg);
   }
 
-
-
   login(email: string, password: string): Observable<boolean> {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     return this.http.post(this.apiURL + '/authenticate',
@@ -48,7 +46,7 @@ export class UserService {
           // return false to indicate failed login
           return false;
         }
-      });
+      }).catch(this.handleError);
   }
 
   logout() {
@@ -62,8 +60,7 @@ export class UserService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    var new_user = JSON.stringify({ name: user.name, email: user.email, password: user.password, password_confirmation: user.password_confirmation });
-    console.log(new_user);
+    var new_user = JSON.stringify({ user:{ name: user.name, email: user.email, password: user.password, password_confirmation: user.password_confirmation } });
     return this.http.post(this.apiURL + '/users', new_user, options)
       .map((response: Response) => response.json());
   }

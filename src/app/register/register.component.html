@@ -13,6 +13,8 @@
 
 <button md-raised-button [disabled]="!f.form.valid"> Register </button>
 <button md-raised-button [routerLink]="['/login']"> Cancel </button>
+
+<div *ngIf="error">{{error}}</div>
 </form>
 
 </div>

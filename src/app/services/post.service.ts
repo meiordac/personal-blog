@@ -43,9 +43,7 @@ export class PostService {
         let headers = new Headers({ 'Authorization': 'Bearer ' + this.userService.token ,'Content-Type': 'application/json'});
         let options = new RequestOptions({ headers: headers });
 
-
       var new_post=JSON.stringify({title: title, content: content, author: author, published_at: new Date(), avatar: image } );
-      console.log(new_post);
       return this.http
           .post(this.postsURL, new_post, options)
           .map(res => res.json())

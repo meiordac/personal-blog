@@ -12,14 +12,13 @@ export class RegisterComponent implements OnInit {
   }
 
     model: any = {};
-    loading = false;
+    error = '';
  
     constructor(
         private router: Router,
         private userService: UserService) { }
  
     register() {
-        this.loading = true;
         this.userService.create(this.model)
             .subscribe(
                 data => {
@@ -27,7 +26,8 @@ export class RegisterComponent implements OnInit {
                     this.router.navigate(['/login']);
                 },
                 error => {
-                  console.log(error);
+                    this.error = error.statusText;
+                    console.log(error);
                 });
     }
 }

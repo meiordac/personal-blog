@@ -24,6 +24,11 @@ export class LoginComponent implements OnInit {
         } else {
           this.error = "Login error";
         }
-      });;
-  }
+      },
+      
+                      error => {
+                    this.error = "Login error";
+                    console.log(error);
+                });
+              }
 }

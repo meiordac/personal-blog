@@ -6,5 +6,5 @@
 <md-input placeholder="Password" type="password" style="width: 100%" name="password" [(ngModel)]="model.password" #password="ngModel" required ></md-input>
 <button md-raised-button [disabled]="!loginForm.form.valid"> Login </button>
 </form>
-<div *ngIf="error" class="alert alert-danger">{{error}}</div>
+<div *ngIf="error">{{error}}</div>
 </div>
