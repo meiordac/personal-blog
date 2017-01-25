@@ -7,13 +7,16 @@
       <div *ngIf="post">
         <md-card>
           <md-card-header>
-            <md-card-title>{{post.title}} </md-card-title>
-            <md-card-subtitle> by {{post.author}} on {{post.published_at | date}} </md-card-subtitle>
+             <md-card-title> by {{post.author}} </md-card-title>
+            <md-card-subtitle>  on {{post.published_at | date:'fullDate'}} </md-card-subtitle>
           </md-card-header>
           <md-card-content>   
-            <span [innerHTML]="post.content | newlines"></span>
+            
+            <md-card-title>{{post.title}} </md-card-title>
+            <img md-card-image src={{post.image}}>
+            <span class="postcontent" [innerHTML]="post.content | newlines"></span>
           </md-card-content>
-          <img md-card-image src={{post.image}}>
+  
           <md-card-actions>
             <button md-raised-button (click)="linkedInShare(post)"><i class='fa fa-share-alt'></i> </button>
             <button md-raised-button (click)="goBack()"> BACK </button>

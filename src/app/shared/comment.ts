@@ -5,4 +5,5 @@ export class Comment {
   author: string;
   published_at: Date;
   upvote: number;
+  avatar: string;
 }
