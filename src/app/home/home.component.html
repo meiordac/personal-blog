@@ -2,17 +2,16 @@
 
 <div class="containerX">
   <div [fxLayout]="row" class="container">
-    <div fxFlex="20"> </div>
-    <div fxFlex="60">
+    <div fxFlex="10"> </div>
+    <div fxFlex="80">
 
       <div class="content" *ngFor="let post of posts">
         <md-card>
           <md-card-header>
-             <md-card-title> by {{post.author}} </md-card-title>
-            <md-card-subtitle>  on {{post.published_at | date:'fullDate'}} </md-card-subtitle>
+             <md-card-title>{{post.title}} </md-card-title>
+            <md-card-subtitle> by {{post.author}} on {{post.published_at | date:'fullDate'}} </md-card-subtitle>
           </md-card-header>
           <md-card-content>            
-            <md-card-title>{{post.title}} </md-card-title>
             <img md-card-image src={{post.image}}>
             <span class="postcontent" [innerHTML]="post.content | newlines | slice:0:300"></span>...
           </md-card-content>
