@@ -6,7 +6,7 @@ import { User } from '../shared/user'
 @Injectable()
 export class UserService {
   public token: string;
-  private apiURL='https://personal-blog-api.herokuapp.com';
+  private apiURL = 'https://personal-blog-api.herokuapp.com';
   //private apiURL = 'http://localhost:3000';
 
   constructor(private http: Http) {
@@ -31,9 +31,13 @@ export class UserService {
 
   login(email: string, password: string): Observable<boolean> {
     let headers = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.post(this.apiURL + '/authenticate',
-      JSON.stringify({ email, password }), { headers }).map((response: Response) => {
+    let options = new RequestOptions({ headers: headers });
+    var user = JSON.stringify({ email: email, password: password });
+    console.log(user);
+    return this.http.post(this.apiURL + '/authenticate', user, options)
+      .map((response: Response) => {
         // login successful if there's a jwt token in the response
+        console.log(response.json());
         let token = response.json() && response.json().auth_token;
         if (token) {
           // set token property
@@ -60,7 +64,7 @@ export class UserService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    var new_user = JSON.stringify({ user:{ name: user.name, email: user.email, password: user.password, password_confirmation: user.password_confirmation } });
+    var new_user = JSON.stringify({ user: { name: user.name, email: user.email, password: user.password, password_confirmation: user.password_confirmation } });
     return this.http.post(this.apiURL + '/users', new_user, options)
       .map((response: Response) => response.json());
   }
