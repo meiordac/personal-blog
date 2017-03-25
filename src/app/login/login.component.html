@@ -2,8 +2,16 @@
 <div class="app-content">
 <h1>Login</h1>
   <form (ngSubmit)="login()" #loginForm="ngForm">
-    <md-input placeholder="Email" style="width: 100%" name="email" [(ngModel)]="model.email" #username="ngModel" required></md-input>
-<md-input placeholder="Password" type="password" style="width: 100%" name="password" [(ngModel)]="model.password" #password="ngModel" required ></md-input>
+    <md-input-container>
+      <input mdInput placeholder="Email" style="width: 100%" [(ngModel)]="model.email" #username="ngModel" required>
+    </md-input-container>
+    
+    <button md-raised-button (click)="addComment(commentInput.value); commentInput.value='' "> 
+      <i class="fa fa-check" aria-hidden="true"></i> </button>
+
+    <md-input-container>
+      <input mdInput placeholder="Password" type="password" style="width: 100%" [(ngModel)]="model.password" #password="ngModel" required>
+    </md-input-container>
 <button md-raised-button [disabled]="!loginForm.form.valid"> Login </button>
 </form>
 <div *ngIf="error">{{error}}</div>

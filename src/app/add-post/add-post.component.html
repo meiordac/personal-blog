@@ -2,10 +2,17 @@
 <div class="app-content">
     <h1>Create Post</h1>
     <form #CreatePostForm="ngForm">
-      <md-input #title name="title" placeholder="Title" style="width: 90%" [(ngModel)]="model.title" required></md-input>
-      <md-input #content name="content" placeholder="Content" style="width: 90%" [(ngModel)]="model.content" required></md-input>
-      <md-input #image name="image"  placeholder="Image" style="width: 90%" [(ngModel)]="model.image"></md-input>
+      <md-input-container>
+        <input mdInput #title placeholder="Title" style="width: 90%" [(ngModel)]="model.title" required>
+      </md-input-container>
 
+      <md-input-container>
+           <input #content placeholder="Content" style="width: 90%" [(ngModel)]="model.content" required>
+      </md-input-container>
+
+      <md-input-container>
+          <input #image placeholder="Image" style="width: 90%" [(ngModel)]="model.image">
+      </md-input-container>
       <button md-raised-button (click)="addPost()" [disabled]="!CreatePostForm.form.valid"> Create</button>
     </form>
 </div>
