@@ -1,19 +1,19 @@
-import { Injectable }    from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Headers, Http, RequestOptions, Response } from '@angular/http';
 
-import { Observable }     from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
+import { environment } from '../../environments/environment';
 import { UserService } from '../services/user.service';
-import {Post} from '../shared/post';
+import { Post } from '../shared/post';
 
 @Injectable()
 export class PostService {
 
-  private postsURL = 'https://personal-blog-api.herokuapp.com/posts/'; // URL to web api
-  //private postsURL = 'http://localhost:3000/posts/';  // URL to web api
+  private postsURL = environment.api + '/posts/'; 
 
   constructor(private http: Http, private userService: UserService) { }
-  
-  private handleError (error: Response | any) {
+
+  private handleError(error: Response | any) {
     // In a real world app, we might use a remote logging infrastructure
     let errMsg: string;
     if (error instanceof Response) {
@@ -29,24 +29,24 @@ export class PostService {
 
   getPosts(): Observable<Post[]> {
 
-        return this.http.get(this.postsURL)
-               .map(response => response.json() as Post[])
-               .catch(this.handleError);
-  } 
-
-  getPost(id : number): Observable<Post> {
-    return this.getPosts().map(x => x.find(post => post.id==id));
+    return this.http.get(this.postsURL)
+      .map(response => response.json() as Post[])
+      .catch(this.handleError);
   }
 
-  create(  title: String, content : String, author: String, image: String): Observable<Post> {
-        // add authorization header with jwt token and application/json header so otherwise it wouldnt let me create comments!
-        let headers = new Headers({ 'Authorization': 'Bearer ' + this.userService.token ,'Content-Type': 'application/json'});
-        let options = new RequestOptions({ headers: headers });
+  getPost(id: number): Observable<Post> {
+    return this.getPosts().map(x => x.find(post => post.id == id));
+  }
 
-      var new_post=JSON.stringify({title: title, content: content, author: author, published_at: new Date(), avatar: image } );
-      return this.http
-          .post(this.postsURL, new_post, options)
-          .map(res => res.json())
-          .catch(this.handleError);
+  create(title: String, content: String, author: String, image: String): Observable<Post> {
+    // add authorization header with jwt token and application/json header so otherwise it wouldnt let me create comments!
+    let headers = new Headers({ 'Authorization': 'Bearer ' + this.userService.token, 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    var new_post = JSON.stringify({ title: title, content: content, author: author, published_at: new Date(), avatar: image });
+    return this.http
+      .post(this.postsURL, new_post, options)
+      .map(res => res.json())
+      .catch(this.handleError);
   }
 }

@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Headers, Http, RequestOptions, Response } from '@angular/http';
+import { environment } from '../../environments/environment';
 import { User } from '../shared/user'
 
 @Injectable()
 export class UserService {
   public token: string;
-  private apiURL = 'https://personal-blog-api.herokuapp.com';
-  //private apiURL = 'http://localhost:3000';
+  private apiURL = environment.api;
 
   constructor(private http: Http) {
     // set token if saved in local storage
