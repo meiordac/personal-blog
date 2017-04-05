@@ -22,8 +22,7 @@ export class AppComponent implements OnInit {
     this.userService.logout();
     this.user = null;
   }
-
-  subheading = 'In Angular 2';
+  
   github = 'https://github.com/meiordac/';
   linkedin = 'https://www.linkedin.com/in/matiasiordache';
   stackoverflow = 'http://stackoverflow.com/users/2373657/matias-iordache';
