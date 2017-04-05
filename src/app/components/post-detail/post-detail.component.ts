@@ -2,10 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params }   from '@angular/router';
 import { Location }                 from '@angular/common';
 
-import {Post} from '../shared/post'
-import {Comment} from '../shared/comment'
-import {PostService} from '../services/post.service'
-import {CommentService} from '../services/comment.service'
+import {Post} from '../../shared/post'
+import {Comment} from '../../shared/comment'
+import {PostService} from '../../services/post.service'
+import {CommentService} from '../../services/comment.service'
 
 @Component({
   selector: 'app-post-detail',

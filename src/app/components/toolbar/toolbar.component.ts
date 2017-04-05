@@ -1,7 +1,7 @@
 import { Component, Output, OnInit } from '@angular/core';
 
-import { User } from '../shared/user'
-import { UserService } from '../services/user.service'
+import { User } from '../../shared/user'
+import { UserService } from '../../services/user.service'
 
 @Component({
   selector: 'app-toolbar',

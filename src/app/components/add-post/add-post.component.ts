@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
-import { Post } from '../shared/post'
-import { PostService } from '../services/post.service'
+import { Post } from '../../shared/post'
+import { PostService } from '../../services/post.service'
 
 @Component({
   selector: 'app-add-post',

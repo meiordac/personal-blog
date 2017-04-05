@@ -40,7 +40,7 @@ import { AuthGuard } from './guards/index';
   imports: [
     MaterialModule,
     BrowserAnimationsModule,
-    FlexLayoutModule.forRoot(),
+    FlexLayoutModule,
     BrowserModule,
     FormsModule,
     HttpModule,

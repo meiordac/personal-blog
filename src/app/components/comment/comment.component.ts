@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { CommentService } from '../services/comment.service'
-import { Comment } from '../shared/comment'
-import { Post } from '../shared/post'
+import { CommentService } from '../../services/comment.service'
+import { Comment } from '../../shared/comment'
+import { Post } from '../../shared/post'
 
 @Component({
   selector: 'app-comment',
