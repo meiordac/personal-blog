@@ -9,7 +9,7 @@ import { Post } from '../shared/post';
 @Injectable()
 export class PostService {
 
-  private postsURL = environment.api + '/posts/'; 
+  private postsURL = environment.api + '/posts/';
 
   constructor(private http: Http, private userService: UserService) { }
 
@@ -40,10 +40,10 @@ export class PostService {
 
   create(title: String, content: String, author: String, image: String): Observable<Post> {
     // add authorization header with jwt token and application/json header so otherwise it wouldnt let me create comments!
-    let headers = new Headers({ 'Authorization': 'Bearer ' + this.userService.token, 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
+    const headers = new Headers({ 'Authorization': 'Bearer ' + this.userService.token, 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
 
-    var new_post = JSON.stringify({ title: title, content: content, author: author, published_at: new Date(), avatar: image });
+    const new_post = JSON.stringify({ title: title, content: content, author: author, published_at: new Date(), avatar: image });
     return this.http
       .post(this.postsURL, new_post, options)
       .map(res => res.json())
