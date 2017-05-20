@@ -11,6 +11,7 @@ import { PostService } from '../../services/post.service'
   styleUrls: ['./add-post.component.css']
 })
 export class AddPostComponent implements OnInit {
+  model: Post = new Post();
 
   constructor(
     private router: Router,
@@ -20,12 +21,11 @@ export class AddPostComponent implements OnInit {
   ngOnInit() {
   }
 
-  model: any = {};
 
   addPost(): void {
-    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     console.log(currentUser);
-    this.postService.create(this.model.title, this.model.content, currentUser.name , this.model.image)
+    this.postService.create(this.model.title, this.model.content, currentUser.name, this.model.image)
       .subscribe(post => {
         this.router.navigate(['']);
       });
