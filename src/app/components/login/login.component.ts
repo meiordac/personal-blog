@@ -22,13 +22,13 @@ export class LoginComponent implements OnInit {
         if (result === true) {
           this.router.navigate(['']);
         } else {
-          this.error = "Login error";
+          this.error = 'Login error';
         }
       },
-      
-                      error => {
-                    this.error = "Login error";
-                    console.log(error);
-                });
-              }
+
+      error => {
+        this.error = 'Login error';
+        console.log(error);
+      });
+  }
 }
