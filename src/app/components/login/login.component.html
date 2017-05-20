@@ -1,19 +1,21 @@
 <app-toolbar></app-toolbar>
 <div class="app-content">
-  <h1>Login</h1>
-  <form (ngSubmit)="login()" #loginForm="ngForm">
-    <md-input-container>
-      <input mdInput placeholder="Email" style="width: 100%" [(ngModel)]="model.email" #username="ngModel" required>
-    </md-input-container>
-
-    <button md-raised-button> 
-      <i class="fa fa-check" aria-hidden="true"></i> </button>
-
-    <md-input-container>
-      <input mdInput placeholder="Password" type="password" style="width: 100%" [(ngModel)]="model.password" #password="ngModel"
-        required>
-    </md-input-container>
-    <button md-raised-button [disabled]="!loginForm.form.valid"> Login </button>
-  </form>
-  <div *ngIf="error">{{error}}</div>
+  <div class="containerX">
+    <h1>Login</h1>
+    <form (ngSubmit)="login()" #loginForm="ngForm">
+      <div fxLayout="row" class="container">
+        <md-input-container>
+          <input mdInput name="user" placeholder="Email" [(ngModel)]="model.email" required>
+        </md-input-container>
+      </div>
+      <div fxLayout="row" class="container">
+        <md-input-container>
+          <input mdInput name="password" placeholder="Password" type="password" [(ngModel)]="model.password" 
+            required>
+        </md-input-container>
+      </div>
+      <button md-raised-button [disabled]="!loginForm.form.valid"> Login </button>
+    </form>
+    <div *ngIf="error">{{error}}</div>
+  </div>
 </div>
