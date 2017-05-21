@@ -1,46 +1,20 @@
 <app-toolbar></app-toolbar>
-<div class="containerX">
-  <div fxLayout="row" class="container">
-    <div fxFlex="9"> </div>
-    <div fxFlex="40">
-
-      <div *ngFor="let post of posts | slice:0:3">
-        <md-card>
-          <md-card-header>
-            <md-card-title>{{post.title}} </md-card-title>
-            <md-card-subtitle> by {{post.author}} on {{post.published_at | date:'fullDate'}} </md-card-subtitle>
-          </md-card-header>
-          <img md-card-image src={{post.image}} />
-          <md-card-content>
-            <span class="postcontent" [innerHTML]="post.content | newlines | slice:0:300"></span>...
-          </md-card-content>
-          <md-card-actions>
-            <button md-raised-button (click)="gotoDetail(post)">SEE MORE</button>
-          </md-card-actions>
-        </md-card>
-        <br/>
-      </div>
-    </div>
-  <div fxFlex="2"> </div>
-    <div fxFlex="40">
-
-      <div *ngFor="let post of posts  | slice:3:6">
-        <md-card>
-          <md-card-header>
-            <md-card-title>{{post.title}} </md-card-title>
-            <md-card-subtitle> by {{post.author}} on {{post.published_at | date:'fullDate'}} </md-card-subtitle>
-          </md-card-header>
-          <img md-card-image src={{post.image}} />
-          <md-card-content>
-            <span class="postcontent" [innerHTML]="post.content | newlines | slice:0:300"></span>...
-          </md-card-content>
-          <md-card-actions>
-            <button md-raised-button (click)="gotoDetail(post)">SEE MORE</button>
-          </md-card-actions>
-        </md-card>
-        <br/>
-      </div>
-    </div>
-    <div fxFlex> </div>
-  </div>
+<div class="container">
+  <masonry [options]="myOptions" [useImagesLoaded]="true">
+    <masonry-brick class="brick" *ngFor="let post of posts">
+      <md-card>
+        <md-card-header>
+          <md-card-title>{{post.title}} </md-card-title>
+          <md-card-subtitle> by {{post.author}} on {{post.published_at | date:'fullDate'}} </md-card-subtitle>
+        </md-card-header>
+        <img md-card-image src={{post.image}} />
+        <md-card-content>
+          <span class="postcontent" [innerHTML]="post.content | newlines | slice:0:300"></span>...
+        </md-card-content>
+        <md-card-actions>
+          <button md-raised-button (click)="gotoDetail(post)">SEE MORE</button>
+        </md-card-actions>
+      </md-card>
+    </masonry-brick>
+  </masonry>
 </div>
