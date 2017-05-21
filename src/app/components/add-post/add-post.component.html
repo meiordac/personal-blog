@@ -3,23 +3,25 @@
   <div class="containerX">
     <h1>Create Post</h1>
     <form #CreatePostForm="ngForm">
-      <div fxLayout="row" class="container">
-        <md-input-container>
-          <input mdInput name="title" placeholder="Title" [(ngModel)]="model.title" required>
-        </md-input-container>
-      </div>
-      <div fxLayout="row" class="container">
-        <md-input-container>
-          <textarea mdInput name="content" placeholder="Content" [(ngModel)]="model.content" required></textarea>
-        </md-input-container>
-      </div>
-      <div fxLayout="row" class="container">
-        <md-input-container>
-          <input mdInput name="image" placeholder="Image" [(ngModel)]="model.image">
-        </md-input-container>
-      </div>
-      <div fxLayout="row" class="container">
-        <button md-raised-button (click)="addPost()" [disabled]="!CreatePostForm.form.valid"> Create</button>
+      <div class="container">
+        <div fxLayout="row" fxLayout.xs="column">
+          <md-input-container>
+            <input mdInput name="title" placeholder="Title" [(ngModel)]="model.title" required>
+          </md-input-container>
+        </div>
+        <div fxLayout="row">
+          <md-input-container>
+            <textarea mdInput name="content" placeholder="Content" [(ngModel)]="model.content" required></textarea>
+          </md-input-container>
+        </div>
+        <div fxLayout="row">
+          <md-input-container>
+            <input mdInput name="image" placeholder="Image" [(ngModel)]="model.image">
+          </md-input-container>
+        </div>
+        <div fxLayout="row">
+          <button md-raised-button (click)="addPost()" [disabled]="!CreatePostForm.form.valid"> Create</button>
+        </div>
       </div>
     </form>
   </div>
