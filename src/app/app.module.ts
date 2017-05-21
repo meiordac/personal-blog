@@ -5,7 +5,9 @@ import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MasonryModule } from 'angular2-masonry';
 import 'hammerjs';
 
 import { AppComponent } from './app.component';
@@ -43,6 +45,7 @@ import { AuthGuard } from './guards/index';
     BrowserModule,
     FormsModule,
     HttpModule,
+    MasonryModule,
     routing
   ],
   providers: [PostService, CommentService, UserService, AuthGuard],
