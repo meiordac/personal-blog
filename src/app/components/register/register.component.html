@@ -1,36 +1,49 @@
 <app-toolbar></app-toolbar>
 <div class="app-content">
 
-  <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
+  <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm">
 
-    <md-input-container>
-      <input mdInput type="text" placeholder="Name" style="width: 100%" name="name" [(ngModel)]="model.name" #name="ngModel" required>
-    </md-input-container>
+    <div fxLayout="row">
+      <div fxFlex>
 
-    <div *ngIf="f.submitted && !name.valid" class="help-block"> Name is required</div>
+        <md-input-container>
+          <input mdInput type="text" placeholder="Name" style="width: 100%" name="name" [(ngModel)]="model.name" required>
+        </md-input-container>
+      </div>
+    </div>
 
-    <md-input-container>
-      <input mdInput type="text" placeholder="Email" style="width: 100%" name="email" [(ngModel)]="model.email" #email="ngModel"
-        required>
-    </md-input-container>
+    <div fxLayout="row">
+      <div fxFlex>
+        <md-input-container>
+          <input mdInput type="email" placeholder="Email" style="width: 100%" name="email" [(ngModel)]="model.email" required>
+        </md-input-container>
+      </div>
+    </div>
+    <div fxLayout="row">
+      <div fxFlex>
+        <md-input-container>
+          <input mdInput type="password" placeholder="Password" style="width: 100%" name="password" [(ngModel)]="model.password" required>
+        </md-input-container>
+      </div>
+    </div>
 
-    <div *ngIf="f.submitted && !email.valid" class="help-block">Email is required</div>
+    <div fxLayout="row">
+      <div fxFlex>
+        <md-input-container>
+          <input mdInput type="password" placeholder="Password Confirmation" style="width: 100%" name="password_confirmation" [(ngModel)]="model.password_confirmation"
+            required>
+        </md-input-container>
+      </div>
+    </div>
 
-    <md-input-container>
-      <input mdInputtype="password" placeholder="Password" class="form-control" style="width: 100%" name="password" [(ngModel)]="model.password"
-        #password="ngModel" required>
-    </md-input-container>
+    <div fxLayout="row">
+      <div fxFlex>
+        <button md-raised-button [disabled]="!f.form.valid"> Register </button>
+        <button md-raised-button [routerLink]="['/login']"> Cancel </button>
 
-    <md-input-container>
-      <input mdInput type="password" placeholder="Password Confirmation" class="form-control" style="width: 100%" name="password_confirmation"
-        [(ngModel)]="model.password_confirmation" #password_confirmation="ngModel" required>
-    </md-input-container>
-
-
-    <button md-raised-button [disabled]="!f.form.valid"> Register </button>
-    <button md-raised-button [routerLink]="['/login']"> Cancel </button>
-
-    <div *ngIf="error">{{error}}</div>
+        <div *ngIf="error">{{error}}</div>
+      </div>
+    </div>
   </form>
 
 </div>
