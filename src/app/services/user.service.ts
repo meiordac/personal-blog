@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { Headers, Http, RequestOptions, Response } from '@angular/http';
 import { environment } from '../../environments/environment';
 import { User } from '../shared/user'
@@ -68,16 +68,7 @@ export class UserService {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
 
-    const new_user = JSON.stringify(
-      {
-        user:
-        {
-          name: user.name,
-          email: user.email,
-          password: user.password,
-          password_confirmation: user.password_confirmation
-        }
-      });
+    const new_user = JSON.stringify({ user: user });
     return this.http.post(this.apiURL + '/users', new_user, options)
       .map((response: Response) => response.json());
   }
