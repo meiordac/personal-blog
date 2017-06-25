@@ -1,21 +1,34 @@
 <app-toolbar></app-toolbar>
 <div class="app-content">
   <div class="containerX">
-    <h1>Login</h1>
+
     <form (ngSubmit)="login()" #loginForm="ngForm">
-      <div fxLayout="row" class="container">
-        <md-input-container>
-          <input mdInput name="user" placeholder="Email" [(ngModel)]="model.email" required>
-        </md-input-container>
-      </div>
-      <div fxLayout="row" class="container">
-        <md-input-container>
-          <input mdInput name="password" placeholder="Password" type="password" [(ngModel)]="model.password" 
-            required>
-        </md-input-container>
-      </div>
-      <button md-raised-button [disabled]="!loginForm.form.valid"> Login </button>
+      <md-card>
+
+        <md-card-header>
+          <div md-card-avatar></div>
+          <md-card-title>Log in</md-card-title>
+        </md-card-header>
+        <md-card-content>
+          <div fxLayout="row" class="container">
+            <md-input-container>
+              <input mdInput name="user" placeholder="Email" [(ngModel)]="model.email" required>
+            </md-input-container>
+          </div>
+          <div fxLayout="row" class="container">
+            <md-input-container>
+              <input mdInput name="password" placeholder="Password" type="password" [(ngModel)]="model.password" required>
+            </md-input-container>
+          </div>
+        </md-card-content>
+
+        <md-card-actions>
+          <button md-raised-button [disabled]="!loginForm.form.valid"> Login </button>
+          <div *ngIf="error">{{error}}</div>
+        </md-card-actions>
+
+      </md-card>
+
     </form>
-    <div *ngIf="error">{{error}}</div>
   </div>
 </div>

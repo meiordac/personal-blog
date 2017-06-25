@@ -1,28 +1,35 @@
 <app-toolbar></app-toolbar>
 <div class="app-content">
   <div class="containerX">
-    <h1>Create Post</h1>
     <form #CreatePostForm="ngForm">
-      <div class="container">
-        <div fxLayout="row" fxLayout.xs="column">
-          <md-input-container>
-            <input mdInput name="title" placeholder="Title" [(ngModel)]="model.title" required>
-          </md-input-container>
-        </div>
-        <div fxLayout="row">
-          <md-input-container>
-            <textarea mdInput name="content" placeholder="Content" [(ngModel)]="model.content" required></textarea>
-          </md-input-container>
-        </div>
-        <div fxLayout="row">
-          <md-input-container>
-            <input mdInput name="image" placeholder="Image" [(ngModel)]="model.image">
-          </md-input-container>
-        </div>
-        <div fxLayout="row">
-          <button md-raised-button (click)="addPost()" [disabled]="!CreatePostForm.form.valid"> Create</button>
-        </div>
-      </div>
+      <md-card>
+        <md-card-header>
+          <div md-card-avatar></div>
+          <md-card-title>Create post</md-card-title>
+        </md-card-header>
+        <md-card-content>
+          <div class="container">
+            <div fxLayout="row" fxLayout.xs="column">
+              <md-input-container>
+                <input mdInput name="title" placeholder="Title" [(ngModel)]="model.title" required>
+              </md-input-container>
+            </div>
+            <div fxLayout="row">
+              <md-input-container>
+                <textarea mdInput name="content" placeholder="Content" [(ngModel)]="model.content" required></textarea>
+              </md-input-container>
+            </div>
+            <div fxLayout="row">
+              <md-input-container>
+                <input mdInput name="image" placeholder="Image" [(ngModel)]="model.image">
+              </md-input-container>
+            </div>
+            <div fxLayout="row">
+              <button md-raised-button (click)="addPost()" [disabled]="!CreatePostForm.form.valid"> Create</button>
+            </div>
+          </div>
+        </md-card-content>
+      </md-card>
     </form>
   </div>
 </div>

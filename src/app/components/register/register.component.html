@@ -1,49 +1,46 @@
 <app-toolbar></app-toolbar>
 <div class="app-content">
-
   <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm">
+    <md-card>
 
-    <div fxLayout="row">
-      <div fxFlex>
+      <md-card-header>
+        <div md-card-avatar></div>
+        <md-card-title>Sign up</md-card-title>
+      </md-card-header>
+      <md-card-content>
 
-        <md-input-container>
-          <input mdInput type="text" placeholder="Name" style="width: 100%" name="name" [(ngModel)]="model.name" required>
-        </md-input-container>
-      </div>
-    </div>
+        <p>
+          <md-input-container>
+            <input mdInput type="text" placeholder="Name" name="name" [(ngModel)]="model.name" required>
+          </md-input-container>
+        </p>
+        <p>
+          <md-input-container>
+            <input mdInput type="email" placeholder="Email" name="email" [(ngModel)]="model.email" required>
+          </md-input-container>
+        </p>
+        <p>
+          <md-input-container>
+            <input mdInput type="password" placeholder="Password" name="password" [(ngModel)]="model.password" required>
+          </md-input-container>
+        </p>
+        <p>
 
-    <div fxLayout="row">
-      <div fxFlex>
-        <md-input-container>
-          <input mdInput type="email" placeholder="Email" style="width: 100%" name="email" [(ngModel)]="model.email" required>
-        </md-input-container>
-      </div>
-    </div>
-    <div fxLayout="row">
-      <div fxFlex>
-        <md-input-container>
-          <input mdInput type="password" placeholder="Password" style="width: 100%" name="password" [(ngModel)]="model.password" required>
-        </md-input-container>
-      </div>
-    </div>
+          <md-input-container>
+            <input mdInput type="password" placeholder="Password Confirmation" name="password_confirmation" [(ngModel)]="model.password_confirmation"
+              required>
+          </md-input-container>
+        </p>
 
-    <div fxLayout="row">
-      <div fxFlex>
-        <md-input-container>
-          <input mdInput type="password" placeholder="Password Confirmation" style="width: 100%" name="password_confirmation" [(ngModel)]="model.password_confirmation"
-            required>
-        </md-input-container>
-      </div>
-    </div>
-
-    <div fxLayout="row">
-      <div fxFlex>
+      </md-card-content>
+      <md-card-actions>
         <button md-raised-button [disabled]="!f.form.valid"> Register </button>
         <button md-raised-button [routerLink]="['/login']"> Cancel </button>
 
         <div *ngIf="error">{{error}}</div>
-      </div>
-    </div>
+      </md-card-actions>
+    </md-card>
   </form>
+
 
 </div>
