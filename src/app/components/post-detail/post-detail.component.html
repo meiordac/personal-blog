@@ -21,7 +21,7 @@
           </md-card-actions>
         </md-card>
         <br/>
-        <app-comment [post]="post" [comments]="comments"></app-comment>
+        <app-comment *ngIf="user" [post]="post" [comments]="comments"></app-comment>
 
       </div>
     </div>
