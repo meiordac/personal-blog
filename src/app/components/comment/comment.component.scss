@@ -1,0 +1,11 @@
+.commentForm {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  .avatar {
+    margin-right: 1rem;
+  }
+   button {
+    margin-left: 1rem;
+  }
+}
