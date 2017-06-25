@@ -4,6 +4,7 @@ export class Comment {
   content: string;
   author: string;
   published_at: Date;
-  upvote: number;
+  upvotes: number;
+  downvotes: number;
   avatar: string;
 }

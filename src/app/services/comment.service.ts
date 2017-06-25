@@ -65,7 +65,7 @@ export class CommentService {
     // add authorization header with jwt token and application/json header so otherwise it wouldnt let me create comments!
     const headers = new Headers({ 'Authorization': 'Bearer ' + this.userService.token, 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
-    comment.upvote += 1;
+    comment.upvotes += 1;
 
     return this.http
       .put(this.commentsURL + comment.id, comment, options)
@@ -78,7 +78,7 @@ export class CommentService {
     // add authorization header with jwt token and application/json header so otherwise it wouldnt let me create comments!
     const headers = new Headers({ 'Authorization': 'Bearer ' + this.userService.token, 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
-    comment.upvote -= 1;
+    comment.upvotes -= 1;
 
     return this.http
       .put(this.commentsURL, comment, options)
