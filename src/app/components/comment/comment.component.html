@@ -1,28 +1,33 @@
 <md-card>
   <md-card-actions>
-
-    <md-input-container>
-      <input mdInput #commentInput placeholder="Join the discussion" style="width: 90%">
-    </md-input-container><button md-raised-button (click)="addComment(commentInput.value); commentInput.value='' "> <i class="fa fa-check" aria-hidden="true"></i> </button>
-
+    <div class="commentForm">
+      <img class="avatar" *ngIf="user.avatar" md-card-avatar src={{user.avatar}}>
+      <md-input-container>
+        <input mdInput #commentInput placeholder="Join the discussion">
+      </md-input-container>
+      <button md-raised-button (click)="addComment(commentInput.value); commentInput.value='' "> 
+      <i class="fa fa-check" aria-hidden="true"></i> 
+    </button>
+    </div>
   </md-card-actions>
 </md-card>
 <md-card *ngFor="let comment of comments">
   <md-card-header>
-    <img md-card-avatar src={{comment.avatar}}>
+    <img *ngIf="comment.avatar" md-card-avatar src={{comment.avatar}}>
     <md-card-title>{{comment.author}} </md-card-title>
     <md-card-subtitle> {{comment.published_at | date}} </md-card-subtitle>
   </md-card-header>
   <md-card-content>
-    <div class="postcomments">
-      <p>{{comment.content}}</p>
-
-    </div>
+    <span [innerHTML]="comment.content | newlines"></span>
   </md-card-content>
   <md-card-actions>
     <button md-raised-button (click)="upvote(comment)">         
-    <md-icon class="md-24">expand_less</md-icon>
-      {{comment.upvote}}
+    <md-icon>thumb_up</md-icon>
+      {{comment.upvotes}}
+    </button>
+    <button md-raised-button (click)="downvote(comment)">         
+    <md-icon>thumb_down</md-icon>
+      {{comment.downvotes}}
     </button>
   </md-card-actions>
 </md-card>
