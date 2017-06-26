@@ -1,9 +1,9 @@
 # Personal Blog
-I created my personal blog following two main goals:
+I created my personal blog following three main goals:
 
 * Build a real life project with Angular
 * Improve my Blog writing skills 
-* Integrate latest technologies
+* Integrate the latest Web technologies (material design, Angular, etc)
 
 When I first started I didn't use any CLI (although there was a beta at the time) and Angular 2 was recently released I worked with Angular Material Design [material2](https://github.com/angular/material2) alpha which was under active development. Then I included [angular-cli](https://github.com/angular/angular-cli) beta. Right now the project is in Angular 4 (current version of Angular) and being maintained every couple of months as I want to test something now or just integrate the latest upgrades.
 
