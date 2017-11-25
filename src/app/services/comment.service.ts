@@ -13,7 +13,7 @@ import { handleError } from "../shared/httpHelper";
 
 @Injectable()
 export class CommentService {
-  private commentsURL = environment.api + "/comments/"; // URL to web api
+  private commentsURL = environment.api + "/comments"; // URL to web api
 
   constructor(private http: HttpClient, private userService: UserService) {}
 

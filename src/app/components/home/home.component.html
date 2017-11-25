@@ -13,7 +13,7 @@
                     <span class="postcontent" [innerHTML]="post.content | newlines | slice:0:300"></span>...
                 </mat-card-content>
                 <mat-card-actions>
-                    <button md-raised-button (click)="gotoDetail(post)">SEE MORE</button>
+                    <button mat-raised-button (click)="gotoDetail(post)">SEE MORE</button>
                 </mat-card-actions>
             </mat-card>
         </masonry-brick>

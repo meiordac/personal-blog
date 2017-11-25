@@ -10,14 +10,14 @@
                         <mat-card-title> {{post.title}} </mat-card-title>
                         <mat-card-subtitle>by {{post.author}} on {{post.published_at | date:'fullDate'}} </mat-card-subtitle>
                     </mat-card-header>
-                    <img md-card-image src={{post.image}}>
+                    <img mat-card-image src={{post.image}}>
                     <mat-card-content>
                         <span class="postcontent" [innerHTML]="post.content | newlines"></span>
                     </mat-card-content>
 
                     <mat-card-actions>
-                        <button md-raised-button (click)="linkedInShare(post)"><i class='fa fa-share-alt'></i> </button>
-                        <button md-raised-button (click)="goBack()"> BACK </button>
+                        <button mat-raised-button (click)="linkedInShare(post)"><i class='fa fa-share-alt'></i> </button>
+                        <button mat-raised-button (click)="goBack()"> BACK </button>
                     </mat-card-actions>
                 </mat-card>
                 <br/>

@@ -1,13 +1,13 @@
 <mat-card class="example-card">
     <mat-card-actions>
         <div class="commentForm">
-            <img class="avatar" *ngIf="user.avatar" md-card-avatar src={{user.avatar}}>
+            <img class="avatar" *ngIf="user.avatar" mat-card-avatar src={{user.avatar}}>
 
             <mat-form-field class="example-full-width">
                 <textarea matInput #commentInput placeholder="Leave a comment"></textarea>
             </mat-form-field>
 
-            <button md-raised-button (click)="addComment(commentInput.value); commentInput.value='' "> 
+            <button mat-raised-button (click)="addComment(commentInput.value); commentInput.value='' "> 
     <i class="fa fa-check" aria-hidden="true"></i> 
   </button>
         </div>
@@ -21,24 +21,22 @@
         <mat-card-subtitle>{{comment.published_at | date}}</mat-card-subtitle>
     </mat-card-header>
 
-    <img *ngIf="comment.avatar" md-card-avatar src={{comment.avatar}}>
+    <img *ngIf="comment.avatar" mat-card-avatar src={{comment.avatar}}>
     <mat-card-content>
 
         <span [innerHTML]="comment.content | newlines"></span>
     </mat-card-content>
     <mat-card-actions>
-        <button md-raised-button (click)="upvote(comment)">         
+        <button mat-raised-button (click)="upvote(comment)">         
             <mat-icon>thumb_up</mat-icon>
               {{comment.upvotes}}
             </button>
-        <button md-raised-button (click)="downvote(comment)">         
+        <button mat-raised-button (click)="downvote(comment)">         
             <mat-icon>thumb_down</mat-icon>
               {{comment.downvotes}}
             </button>
     </mat-card-actions>
 </mat-card>
-
-
 
 
 <br/>
