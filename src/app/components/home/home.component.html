@@ -1,20 +1,21 @@
 <app-toolbar></app-toolbar>
 <div class="container">
-  <masonry [options]="myOptions" [useImagesLoaded]="true">
-    <masonry-brick class="brick" *ngFor="let post of posts">
-      <md-card>
-        <md-card-header>
-          <md-card-title>{{post.title}} </md-card-title>
-          <md-card-subtitle> by {{post.author}} on {{post.published_at | date:'fullDate'}} </md-card-subtitle>
-        </md-card-header>
-        <img md-card-image src={{post.image}} />
-        <md-card-content>
-          <span class="postcontent" [innerHTML]="post.content | newlines | slice:0:300"></span>...
-        </md-card-content>
-        <md-card-actions>
-          <button md-raised-button (click)="gotoDetail(post)">SEE MORE</button>
-        </md-card-actions>
-      </md-card>
-    </masonry-brick>
-  </masonry>
+    <masonry [options]="myOptions" [useImagesLoaded]="true">
+        <masonry-brick class="brick" *ngFor="let post of posts">
+            <mat-card class="post-card">
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title>{{post.title}}</mat-card-title>
+                    <mat-card-subtitle>by {{post.author}} on {{post.published_at | date:'fullDate'}}</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src="{{post.image}}">
+                <mat-card-content>
+                    <span class="postcontent" [innerHTML]="post.content | newlines | slice:0:300"></span>...
+                </mat-card-content>
+                <mat-card-actions>
+                    <button md-raised-button (click)="gotoDetail(post)">SEE MORE</button>
+                </mat-card-actions>
+            </mat-card>
+        </masonry-brick>
+    </masonry>
 </div>

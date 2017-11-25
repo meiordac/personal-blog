@@ -1,29 +1,37 @@
-<md-toolbar color="primary">
-  <a class="app-icon-button" [routerLink]="['/']">
-    <i class="material-icons app-toolbar-menu">home</i>
-  </a>    
- <!-- This fills the remaining space of the current row -->
-    {{title}}
-  <span class="app-toolbar-filler"></span>  
-  <a md-button href="https://meiordac.github.io/">Personal</a>
-  <a md-button href="https://meiordac.github.io/personal-blog/">Blog</a>
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <a class="app-icon-button" [routerLink]="['/']">
+            <i class="material-icons app-toolbar-menu">home</i>
+        </a>
+        <!-- This fills the remaining space of the current row -->
+        {{title}}
+        <span class="app-toolbar-filler"></span>
+        <a mat-button href="https://meiordac.github.io/">Personal</a>
+        <a mat-button href="https://meiordac.github.io/personal-blog/">Blog</a>
 
-  <!-- menu opens when trigger button is clicked -->
-  <button md-icon-button [mdMenuTriggerFor]="menu">
-   <md-icon>more_vert</md-icon>
-</button>
+        <!-- menu opens when trigger button is clicked -->
+
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+    </mat-toolbar-row>
+</mat-toolbar>
 
 
-</md-toolbar>
 
-  <md-menu x-position="before" #menu="mdMenu">
+
+
+<mat-menu #menu="matMenu">
+
     <div *ngIf="user">
-      <button md-menu-item [routerLink]="['/addpost']"> Add post </button>
-      <button md-menu-item (click)="logout()">Log out</button>
+        <button mat-menu-item [routerLink]="['/addpost']"> Add post </button>
+        <button mat-menu-item (click)="logout()">Log out</button>
     </div>
     <div *ngIf="!user">
-      <button md-menu-item [routerLink]="['/register']">Register</button>
-      <button md-menu-item [routerLink]="['/login']">Log in</button>
+        <button mat-menu-item [routerLink]="['/register']">Register</button>
+        <button mat-menu-item [routerLink]="['/login']">Log in</button>
     </div>
-  </md-menu>
+</mat-menu>
+
 <br/>

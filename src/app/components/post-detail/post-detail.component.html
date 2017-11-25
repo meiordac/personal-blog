@@ -1,30 +1,30 @@
 <app-toolbar></app-toolbar>
 
 <div class="containerX">
-  <div fxLayout="row" class="content">
-    <div fxFlex="10"> </div>
-    <div fxFlex="80">
-      <div *ngIf="post">
-        <md-card>
-          <md-card-header>
-             <md-card-title> {{post.title}}  </md-card-title>
-            <md-card-subtitle>by {{post.author}}  on {{post.published_at | date:'fullDate'}} </md-card-subtitle>
-          </md-card-header>
-            <img md-card-image src={{post.image}}>
-          <md-card-content>   
-            <span class="postcontent" [innerHTML]="post.content | newlines"></span>
-          </md-card-content>
-  
-          <md-card-actions>
-            <button md-raised-button (click)="linkedInShare(post)"><i class='fa fa-share-alt'></i> </button>
-            <button md-raised-button (click)="goBack()"> BACK </button>
-          </md-card-actions>
-        </md-card>
-        <br/>
-        <app-comment *ngIf="user" [post]="post" [comments]="comments"></app-comment>
+    <div fxLayout="row" class="content">
+        <div fxFlex="10"> </div>
+        <div fxFlex="80">
+            <div *ngIf="post">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title> {{post.title}} </mat-card-title>
+                        <mat-card-subtitle>by {{post.author}} on {{post.published_at | date:'fullDate'}} </mat-card-subtitle>
+                    </mat-card-header>
+                    <img md-card-image src={{post.image}}>
+                    <mat-card-content>
+                        <span class="postcontent" [innerHTML]="post.content | newlines"></span>
+                    </mat-card-content>
 
-      </div>
+                    <mat-card-actions>
+                        <button md-raised-button (click)="linkedInShare(post)"><i class='fa fa-share-alt'></i> </button>
+                        <button md-raised-button (click)="goBack()"> BACK </button>
+                    </mat-card-actions>
+                </mat-card>
+                <br/>
+                <app-comment *ngIf="user" [post]="post" [comments]="comments"></app-comment>
+
+            </div>
+        </div>
+        <div fxFlex> </div>
     </div>
-    <div fxFlex> </div>
-  </div>
 </div>

@@ -6,8 +6,6 @@
         "module": "es2015",
         "types": []
     },
-    "exclude": [
-        "test.ts",
-        "**/*.spec.ts"
-    ]
+    "exclude": ["test.ts", "**/*.spec.ts"],
+    "include": ["../node_modules/angular2-masonry/index.ts", "app/**/*"]
 }

@@ -1,34 +1,37 @@
 <app-toolbar></app-toolbar>
 <div class="app-content">
-  <div class="containerX">
-
-    <form (ngSubmit)="login()" #loginForm="ngForm">
-      <md-card>
-
-        <md-card-header>
-          <div md-card-avatar></div>
-          <md-card-title>Log in</md-card-title>
-        </md-card-header>
-        <md-card-content>
-          <div fxLayout="row" class="container">
-            <md-input-container>
-              <input mdInput name="user" placeholder="Email" [(ngModel)]="model.email" required>
-            </md-input-container>
-          </div>
-          <div fxLayout="row" class="container">
-            <md-input-container>
-              <input mdInput name="password" placeholder="Password" type="password" [(ngModel)]="model.password" required>
-            </md-input-container>
-          </div>
-        </md-card-content>
-
-        <md-card-actions>
-          <button md-raised-button [disabled]="!loginForm.form.valid"> Login </button>
-          <div *ngIf="error">{{error}}</div>
-        </md-card-actions>
-
-      </md-card>
-
-    </form>
-  </div>
+    <div class="containerX">
+        <form (ngSubmit)="login()" #loginForm="ngForm">
+            <mat-card class="login-card">
+                <mat-card-header>
+                    <div mat-card-avatar class="header-image"></div>
+                    <mat-card-title>Log in</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <div fxLayout="row" class="container">
+                        <mat-form-field class="emaill-full-width">
+                            <input matInput name="user" placeholder="Email" [formControl]="loginForm" [(ngModel)]="model.email">
+                            <mat-error *ngIf="loginForm.hasError('email') && !loginForm.hasError('required')">
+                                Please enter a valid email address
+                            </mat-error>
+                            <mat-error *ngIf="loginForm.hasError('required')">
+                                Email is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" class="container">
+                        <mat-form-field class="password-full-width">
+                            <input matInput #password maxlength="256" placeholder="Password" type="password" [(ngModel)]="model.password">
+                            <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint>
+                            <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+                        </mat-form-field>
+                    </div>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button md-raised-button [disabled]="!loginForm.form.valid"> Login </button>
+                    <div *ngIf="error">{{error}}</div>
+                </mat-card-actions>
+            </mat-card>
+        </form>
+    </div>
 </div>
