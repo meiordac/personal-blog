@@ -34,6 +34,8 @@ import { AuthGuard } from "./guards/index";
 
 import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
 import { InMemoryDataService } from "./services/in-memory-data.service";
+import { environment } from "../environments/environment.prod";
+import { AuthenticationService } from "./services/authentication.service";
 
 @NgModule({
   declarations: [
@@ -57,9 +59,11 @@ import { InMemoryDataService } from "./services/in-memory-data.service";
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
-      dataEncapsulation: false
-    }),
+    environment.production
+      ? []
+      : HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
+          dataEncapsulation: false
+        }),
     MasonryModule,
     routing,
     MatCardModule,
@@ -69,7 +73,13 @@ import { InMemoryDataService } from "./services/in-memory-data.service";
     MatToolbarModule,
     MatMenuModule
   ],
-  providers: [PostService, CommentService, UserService, AuthGuard],
+  providers: [
+    PostService,
+    CommentService,
+    UserService,
+    AuthenticationService,
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

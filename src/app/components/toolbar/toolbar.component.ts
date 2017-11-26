@@ -2,6 +2,7 @@ import { Component, Output, OnInit } from "@angular/core";
 
 import { User } from "../../shared/user";
 import { UserService } from "../../services/user.service";
+import { AuthenticationService } from "../../services/authentication.service";
 
 @Component({
   selector: "app-toolbar",
@@ -13,13 +14,16 @@ export class ToolbarComponent implements OnInit {
   private sub: any;
   title = "Blog!";
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private authService: AuthenticationService
+  ) {}
   ngOnInit() {
     this.user = this.userService.getUser();
   }
 
   logout() {
-    this.userService.logout();
+    this.authService.logout();
     this.user = null;
   }
 }
