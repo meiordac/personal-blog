@@ -61,6 +61,19 @@ export class InMemoryDataService implements InMemoryDbService {
       }
     ];
 
-    return { posts, comments };
+    const users = [
+      {
+        id: 1,
+        email: "test@email.com",
+        password: "test",
+        password_confirmation: "test",
+        name: "test",
+        avatar: "assets/img/matias.jpg"
+      }
+    ];
+
+    const authenticate = [{ id: 1, auth_token: "12345", name: "test" }];
+
+    return { posts, comments, users, authenticate };
   }
 }

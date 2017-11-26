@@ -1,20 +1,19 @@
-import { Component, Output, OnInit } from '@angular/core';
+import { Component, Output, OnInit } from "@angular/core";
 
-import { User } from '../../shared/user'
-import { UserService } from '../../services/user.service'
+import { User } from "../../shared/user";
+import { UserService } from "../../services/user.service";
 
 @Component({
-  selector: 'app-toolbar',
-  templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.css']
+  selector: "app-toolbar",
+  templateUrl: "./toolbar.component.html",
+  styleUrls: ["./toolbar.component.css"]
 })
 export class ToolbarComponent implements OnInit {
-
-  user: User ;
+  user: User;
   private sub: any;
-  title = 'Personal blog using Angular and Material design!';
+  title = "Blog!";
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {}
   ngOnInit() {
     this.user = this.userService.getUser();
   }
@@ -24,7 +23,3 @@ export class ToolbarComponent implements OnInit {
     this.user = null;
   }
 }
-
-
-
-

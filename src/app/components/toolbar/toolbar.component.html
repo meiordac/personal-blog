@@ -1,26 +1,22 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-        <a class="app-icon-button" [routerLink]="['/']">
-            <i class="material-icons app-toolbar-menu">home</i>
-        </a>
-        <!-- This fills the remaining space of the current row -->
-        {{title}}
-        <span class="app-toolbar-filler"></span>
+        <button mat-button [routerLink]="['/']"> <i class="material-icons app-toolbar-menu">home</i> {{title}}</button>
         <a mat-button href="https://meiordac.github.io/">Personal</a>
-        <a mat-button href="https://meiordac.github.io/personal-blog/">Blog</a>
+        <a mat-button href="https://meiordac.github.io/personal-blog/">Stage</a>
+
+        <!-- This fills the remaining space of the current row -->
+
+        <span class="app-toolbar-filler"></span>
 
         <!-- menu opens when trigger button is clicked -->
 
         <button mat-icon-button [matMenuTriggerFor]="menu">
+
       <mat-icon>more_vert</mat-icon>
     </button>
 
     </mat-toolbar-row>
 </mat-toolbar>
-
-
-
-
 
 <mat-menu #menu="matMenu">
 

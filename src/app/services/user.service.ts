@@ -22,7 +22,7 @@ export class UserService {
   login(email: string, password: string): Observable<boolean> {
     const user = JSON.stringify({ email: email, password: password });
     console.log(user);
-    return this.http.post<Login>(this.apiURL + "/authenticate", user).pipe(
+    return this.http.post<Login>(`${this.apiURL}/authenticate`, user).pipe(
       map(response => {
         // login successful if there's a jwt token in the response
         const token = response.auth_token;

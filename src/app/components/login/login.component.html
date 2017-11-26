@@ -9,22 +9,27 @@
                 </mat-card-header>
                 <mat-card-content>
                     <div fxLayout="row" class="container">
-                        <mat-form-field class="emaill-full-width">
-                            <input matInput name="user" placeholder="Email" [formControl]="loginForm" [(ngModel)]="model.email">
-                            <mat-error *ngIf="loginForm.hasError('email') && !loginForm.hasError('required')">
+
+                        <mat-form-field class="example-full-width">
+                            <input matInput name="user" placeholder="Email" [formControl]="emailFormControl" [(ngModel)]="model.email">
+                            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
                                 Please enter a valid email address
                             </mat-error>
-                            <mat-error *ngIf="loginForm.hasError('required')">
+                            <mat-error *ngIf="emailFormControl.hasError('required')">
                                 Email is <strong>required</strong>
                             </mat-error>
                         </mat-form-field>
+
                     </div>
                     <div fxLayout="row" class="container">
-                        <mat-form-field class="password-full-width">
-                            <input matInput #password maxlength="256" placeholder="Password" type="password" [(ngModel)]="model.password">
-                            <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint>
-                            <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+
+                        <mat-form-field class="example-form-field">
+                            <input matInput name="password" type="password" placeholder="Password" [(ngModel)]="model.password" />
+                            <button mat-button *ngIf="model.password" matSuffix mat-icon-button aria-label="Clear" (click)="model.password=''">
+                                      <mat-icon>close</mat-icon>
+                                    </button>
                         </mat-form-field>
+
                     </div>
                 </mat-card-content>
                 <mat-card-actions>
