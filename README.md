@@ -1,40 +1,84 @@
-# Personal Blog
+# PersonalBlog
 
-I created my personal blog following three main goals:
+This project was generated using [Nx](https://nx.dev).
 
-- Build a real life project with Angular
-- Improve my Blog writing skills
-- Integrate the latest Web technologies (material design, Angular, etc)
+<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/nx-logo.png" width="450"></p>
 
-When I first started I didn't use any CLI (although there was a beta at the time) and Angular 2 was recently released I worked with Angular Material Design [material2](https://github.com/angular/material2) alpha which was under active development. Then I included [angular-cli](https://github.com/angular/angular-cli) beta. Right now the project is in Angular 9 (next version of Angular) and being maintained every couple of months as I want to test something now or just integrate the latest upgrades.
+🔎 **Nx is a set of Extensible Dev Tools for Monorepos.**
 
-I wrote a small Rest API using Ruby on Rails in the next [link](https://github.com/meiordac/personal-blog-api) to allow me to persist my posts and comments, and practice the integration with a real life API.
+## Quick Start & Documentation
+
+[Nx Documentation](https://nx.dev/angular)
+
+[10-minute video showing all Nx features](https://nx.dev/angular/getting-started/what-is-nx)
+
+[Interactive Tutorial](https://nx.dev/angular/tutorial/01-create-application)
+
+## Adding capabilities to your workspace
+
+Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+
+These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+
+Below are some plugins which you can add to your workspace:
+
+- [Angular](https://angular.io)
+  - `ng add @nrwl/angular`
+- [React](https://reactjs.org)
+  - `ng add @nrwl/react`
+- Web (no framework frontends)
+  - `ng add @nrwl/web`
+- [Nest](https://nestjs.com)
+  - `ng add @nrwl/nest`
+- [Express](https://expressjs.com)
+  - `ng add @nrwl/express`
+- [Node](https://nodejs.org)
+  - `ng add @nrwl/node`
+
+## Generate an application
+
+Run `ng g @nrwl/angular:app my-app` to generate an application.
+
+> You can use any of the plugins above to generate applications as well.
+
+When using Nx, you can create multiple applications and libraries in the same workspace.
+
+## Generate a library
+
+Run `ng g @nrwl/angular:lib my-lib` to generate a library.
+
+> You can also use any of the plugins above to generate libraries as well.
+
+Libraries are sharable across libraries and applications. They can be imported from `@personal-blog/mylib`.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
+Run `ng g component my-component --project=my-app` to generate a new component.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Run `ng build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `ng test my-app` to execute the unit tests via [Jest](https://jestjs.io).
+
+Run `nx affected:test` to execute the unit tests affected by a change.
 
 ## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
 
-## Deploying to Github Pages
+Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
 
-Run `npm run deploy` to deploy to Github Pages. I am using an external libraries for this purpose which should be installed before using this.
+## Understand your workspace
+
+Run `nx dep-graph` to see a diagram of the dependencies of your projects.
 
 ## Further help
 
-To get more help on the `angular-cli` use `ng help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
