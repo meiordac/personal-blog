@@ -6,5 +6,5 @@
     "types": []
   },
   "exclude": ["test.ts", "**/*.spec.ts"],
-  "include": ["../node_modules/angular2-masonry/index.ts", "**/*.ts"]
+  "include": ["**/*.ts"]
 }

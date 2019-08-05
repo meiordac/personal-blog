@@ -1,9 +1,9 @@
-import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-import { Observable ,  of } from "rxjs";
-import { catchError, map, tap } from "rxjs/operators";
-import { environment } from "../../environments/environment";
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AuthenticationService {
@@ -24,7 +24,7 @@ export class AuthenticationService {
           this.token = token;
           // store username and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem(
-            "currentUser",
+            'currentUser',
             JSON.stringify({
               name: response.name,
               avatar: response.avatar,
@@ -44,12 +44,12 @@ export class AuthenticationService {
 
   logout() {
     this.token = null;
-    localStorage.removeItem("currentUser");
+    localStorage.removeItem('currentUser');
   }
 
   setToken() {
     // set token if saved in local storage
-    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.token = currentUser && currentUser.token;
   }
 
@@ -59,8 +59,8 @@ export class AuthenticationService {
 
   getAuthorizationHeader(): HttpHeaders {
     const headers = new HttpHeaders()
-      .set("Authorization", `Bearer ${this.token}`)
-      .set("Content-Type", "application/json");
+      .set('Authorization', `Bearer ${this.token}`)
+      .set('Content-Type', 'application/json');
 
     return headers;
   }

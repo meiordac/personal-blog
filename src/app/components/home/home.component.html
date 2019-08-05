@@ -1,7 +1,6 @@
 <app-toolbar></app-toolbar>
 <div class="container">
-    <masonry [options]="myOptions" [useImagesLoaded]="true">
-        <masonry-brick class="brick" *ngFor="let post of posts">
+        <div class="brick" *ngFor="let post of posts">
             <mat-card class="post-card">
                 <mat-card-header>
                     <div mat-card-avatar class="example-header-image"></div>
@@ -16,6 +15,5 @@
                     <button mat-raised-button (click)="gotoDetail(post)">SEE MORE</button>
                 </mat-card-actions>
             </mat-card>
-        </masonry-brick>
-    </masonry>
+        </div>
 </div>

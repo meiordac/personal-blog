@@ -11,7 +11,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MasonryModule } from 'angular2-masonry';
 
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
