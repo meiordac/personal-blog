@@ -46,7 +46,6 @@ import { NewlinesPipe } from './shared/newline.pipe';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MasonryModule,
     routing,
     MatCardModule,
     MatInputModule,

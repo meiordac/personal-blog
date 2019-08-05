@@ -10,19 +10,19 @@
                 <mat-card-content>
                     <div class="container">
                         <div fxLayout="row" fxLayout.xs="column">
-                            <mat-input-container>
+                            <mat-form-field>
                                 <input mdInput name="title" placeholder="Title" [(ngModel)]="model.title" required>
-                            </mat-input-container>
+                            </mat-form-field>
                         </div>
                         <div fxLayout="row">
-                            <mat-input-container>
+                            <mat-form-field>
                                 <textarea mdInput name="content" placeholder="Content" [(ngModel)]="model.content" required></textarea>
-                            </mat-input-container>
+                            </mat-form-field>
                         </div>
                         <div fxLayout="row">
-                            <mat-input-container>
+                            <mat-form-field>
                                 <input mdInput name="image" placeholder="Image" [(ngModel)]="model.image">
-                            </mat-input-container>
+                            </mat-form-field>
                         </div>
                         <div fxLayout="row">
                             <button mat-raised-button (click)="addPost()" [disabled]="!CreatePostForm.form.valid"> Create</button>
