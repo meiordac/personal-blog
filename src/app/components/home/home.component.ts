@@ -1,10 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { MasonryOptions } from 'angular2-masonry';
 
-import { Post } from '../../shared/post'
-import { PostService } from '../../services/post.service'
+import { Post } from '../../shared/post';
+import { PostService } from '../../services/post.service';
 
 @Component({
   selector: 'app-home',
@@ -12,28 +11,49 @@ import { PostService } from '../../services/post.service'
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  public myOptions: MasonryOptions = {
-    transitionDuration: '0.8s',
-    columnWidth: 10,
-    fitWidth: true
-  };
   posts: Post[];
 
-  constructor(private postService: PostService,
+  constructor(
+    private postService: PostService,
     private router: Router,
-    private location: Location) {
+    private location: Location
+  ) {}
+
+  /**
+   *
+   *
+   * @memberof HomeComponent
+   */
+  ngOnInit() {
+    this.getPosts();
   }
 
+  /**
+   *
+   *
+   * @param {Post} post
+   * @memberof HomeComponent
+   */
   gotoDetail(post: Post): void {
     const link = ['/detail', post.id];
     this.router.navigate(link);
   }
 
+  /**
+   *
+   *
+   * @memberof HomeComponent
+   */
   gotoLogin(): void {
     const link = ['/login'];
     this.router.navigate(link);
   }
 
+  /**
+   *
+   *
+   * @memberof HomeComponent
+   */
   getPosts(): void {
     this.postService.getPosts().subscribe(posts => {
       this.posts = posts;
@@ -55,9 +75,4 @@ export class HomeComponent implements OnInit {
     }
     return 0;
   }
-
-  ngOnInit() {
-    this.getPosts();
-  }
-
 }

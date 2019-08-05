@@ -1,41 +1,32 @@
-import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
-import {
-  MatCardModule,
-  MatInputModule,
-  MatButtonModule,
-  MatIconModule,
-  MatToolbarModule,
-  MatMenuModule
-} from "@angular/material";
-import { RouterModule } from "@angular/router";
-import { FlexLayoutModule } from "@angular/flex-layout";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import 'hammerjs';
 
-import { MasonryModule } from "angular2-masonry";
-import "hammerjs";
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AppComponent } from "./app.component";
-import { routing } from "./app.routing";
-import { PostDetailComponent } from "./components/post-detail/post-detail.component";
-import { PostService } from "./services/post.service";
-import { CommentService } from "./services/comment.service";
-import { UserService } from "./services/user.service";
-import { NewlinesPipe } from "./shared/newline.pipe";
-import { CommentComponent } from "./components/comment/comment.component";
-import { LoginComponent } from "./components/login/login.component";
-import { RegisterComponent } from "./components/register/register.component";
-import { AddPostComponent } from "./components/add-post/add-post.component";
-import { HomeComponent } from "./components/home/home.component";
-import { ToolbarComponent } from "./components/toolbar/toolbar.component";
-import { AuthGuard } from "./guards/index";
-
-import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
-import { InMemoryDataService } from "./services/in-memory-data.service";
-import { environment } from "../environments/environment.prod";
-import { AuthenticationService } from "./services/authentication.service";
+import { AppComponent } from './app.component';
+import { routing } from './app.routing';
+import { AddPostComponent } from './components/add-post/add-post.component';
+import { CommentComponent } from './components/comment/comment.component';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { PostDetailComponent } from './components/post-detail/post-detail.component';
+import { RegisterComponent } from './components/register/register.component';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { AuthGuard } from './guards';
+import { AuthenticationService } from './services/authentication.service';
+import { CommentService } from './services/comment.service';
+import { PostService } from './services/post.service';
+import { UserService } from './services/user.service';
+import { NewlinesPipe } from './shared/newline.pipe';
 
 @NgModule({
   declarations: [
@@ -51,20 +42,10 @@ import { AuthenticationService } from "./services/authentication.service";
   ],
   imports: [
     BrowserAnimationsModule,
-    FlexLayoutModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
-    // and returns simulated server responses.
-    // Remove it when a real server is ready to receive requests.
-    environment.production
-      ? []
-      : HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
-          dataEncapsulation: false
-        }),
-    MasonryModule,
     routing,
     MatCardModule,
     MatInputModule,

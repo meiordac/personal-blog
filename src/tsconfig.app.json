@@ -1,11 +1,10 @@
 {
-    "extends": "../tsconfig.json",
-    "compilerOptions": {
-        "outDir": "../out-tsc/app",
-        "baseUrl": "./",
-        "module": "es2015",
-        "types": []
-    },
-    "exclude": ["test.ts", "**/*.spec.ts"],
-    "include": ["../node_modules/angular2-masonry/index.ts", "**/*.ts"]
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/app",
+    "baseUrl": "./",
+    "types": []
+  },
+  "exclude": ["test.ts", "**/*.spec.ts"],
+  "include": ["**/*.ts"]
 }
