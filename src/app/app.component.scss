@@ -1,4 +1,4 @@
-$palette-grey: "250,250,250" "245,245,245" "238,238,238" "224,224,224" "189,189,189" "158,158,158" "117,117,117" "97,97,97" "66,66,66" "33,33,33";
+$palette-grey: "250,250,250""245,245,245""238,238,238""224,224,224""189,189,189""158,158,158""117,117,117""97,97,97""66,66,66""33,33,33";
 $palette-grey-50: nth($palette-grey, 1);
 $palette-grey-100: nth($palette-grey, 2);
 $palette-grey-200: nth($palette-grey, 3);
@@ -21,6 +21,7 @@ $padding: 16px !default;
 $footer-heading-font-size: 24px !default;
 $footer-heading-line-height: (1.5 * $footer-heading-font-size) !default;
 $footer-btn-size: 36px !default;
+
 .mdl-mini-footer {
   display: flex;
   flex-flow: row wrap;
@@ -28,10 +29,12 @@ $footer-btn-size: 36px !default;
   padding: ($padding * 2) $padding;
   color: $footer-color;
   background-color: $footer-bg-color;
+
   &:after {
     content: '';
     display: block;
   }
+
   & .mdl-logo {
     line-height: $footer-btn-size;
   }
@@ -44,13 +47,16 @@ $footer-btn-size: 36px !default;
   list-style: none;
   margin: 0;
   padding: 0;
+
   & li {
     margin-bottom: 0;
     margin-right: $padding;
+
     @media screen and (min-width: 760px) {
       line-height: $footer-btn-size;
     }
   }
+
   & a {
     color: inherit;
     text-decoration: none;
@@ -80,7 +86,7 @@ $footer-btn-size: 36px !default;
   border: none;
 }
 
-/deep/ {
+::ng-deep {
   .mat-input-container {
     width: 80%;
   }
