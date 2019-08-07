@@ -25,7 +25,10 @@
               "apps/personal-blog/src/favicon.ico",
               "apps/personal-blog/src/assets"
             ],
-            "styles": ["apps/personal-blog/src/styles.scss"],
+            "styles": [
+              "apps/personal-blog/src/styles.scss",
+              "apps/personal-blog/src/blog.scss"
+            ],
             "scripts": []
           },
           "configurations": {
