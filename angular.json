@@ -61,7 +61,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "personal-blog:build"
+            "browserTarget": "personal-blog:build",
+            "proxyConfig": "apps/personal-blog/proxy.conf.json"
           },
           "configurations": {
             "production": {
@@ -119,6 +120,61 @@
             "linter": "tslint",
             "tsConfig": ["apps/personal-blog-e2e/tsconfig.e2e.json"],
             "exclude": ["**/node_modules/**", "!apps/personal-blog-e2e/**"]
+          }
+        }
+      }
+    },
+    "personal-blog-backend": {
+      "root": "apps/personal-blog-backend",
+      "sourceRoot": "apps/personal-blog-backend/src",
+      "projectType": "application",
+      "prefix": "personal-blog-backend",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/personal-blog-backend",
+            "main": "apps/personal-blog-backend/src/main.ts",
+            "tsConfig": "apps/personal-blog-backend/tsconfig.app.json",
+            "assets": ["apps/personal-blog-backend/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/personal-blog-backend/src/environments/environment.ts",
+                  "with": "apps/personal-blog-backend/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "personal-blog-backend:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "tslint",
+            "tsConfig": [
+              "apps/personal-blog-backend/tsconfig.app.json",
+              "apps/personal-blog-backend/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/personal-blog-backend/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/personal-blog-backend/jest.config.js",
+            "tsConfig": "apps/personal-blog-backend/tsconfig.spec.json"
           }
         }
       }
