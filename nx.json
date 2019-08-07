@@ -1,0 +1,21 @@
+{
+  "npmScope": "personal-blog",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": "*",
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "personal-blog-e2e": {
+      "tags": []
+    },
+    "personal-blog": {
+      "tags": []
+    },
+    "personal-blog-backend": {
+      "tags": []
+    }
+  }
+}
