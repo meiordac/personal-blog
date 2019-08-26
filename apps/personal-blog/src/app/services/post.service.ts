@@ -6,7 +6,7 @@ import { catchError, tap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { UserService } from '../services/user.service';
 import { handleError } from '../shared/httpHelper';
-import { Post } from '../shared/post';
+import { Post } from '../../../../../libs/shared/src/models/post';
 
 @Injectable()
 export class PostService {

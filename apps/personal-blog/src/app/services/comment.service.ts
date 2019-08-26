@@ -5,7 +5,7 @@ import { catchError, tap } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
 import { UserService } from '../services/user.service';
-import { Comment } from '../shared/comment';
+import { Comment } from '../../../../../libs/shared/src/models/comment';
 import { handleError } from '../shared/httpHelper';
 
 @Injectable()

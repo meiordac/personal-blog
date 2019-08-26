@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Post } from '../../shared/post';
+import { Post } from '../../../../../../libs/shared/src/models/post';
 import { PostService } from '../../services/post.service';
 
 @Component({
