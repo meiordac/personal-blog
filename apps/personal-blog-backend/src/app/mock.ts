@@ -1,5 +1,6 @@
 export const posts = [
   {
+    id: 1,
     title: 'Angular and Material Design - My experience',
     content: `
     My first experience with Angular was when I took the free course from <a href='https://www.codeschool.com/'>Code School</a>. This course was sponsored by none other than: Google. I really liked the idea of single page-applications. During these days I created a couple of web applications including a couple of MEAN stack courses which were very inspiring and useful.
@@ -11,5 +12,15 @@ export const posts = [
     author: 'Matias Iordache',
     image: 'assets/img/angular2.png',
     published_at: new Date(2016, 9, 24)
+  }
+];
+
+export const comments = [
+  {
+    id_post: 1,
+    content: 'hello this is my first comment',
+    author: 'Matias Iordache',
+    published_at: new Date(2016, 11, 7),
+    avatar: 'assets/img/matias.jpg'
   }
 ];

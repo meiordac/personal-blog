@@ -7,7 +7,7 @@ import * as express from 'express';
 import cors from 'cors';
 
 // mock data
-import { posts } from './app/mock';
+import { posts, comments } from './app/mock';
 
 const app = express();
 app.use(cors());
@@ -18,6 +18,27 @@ app.get('/api', (req, res) => {
 
 app.get('/api/posts', (req, res) => {
   res.send(posts);
+});
+
+app.get('/api/posts/:id', (req, res) => {
+  console.log('Request Id:', req.params.id);
+  res.send(posts[0]);
+});
+
+app.get('/api/comments', (req, res) => {
+  res.send(comments);
+});
+
+app.post('/api/comments', (req, rest) => {
+  rest.send(comments[0]);
+});
+
+app.post('/api/authenticate', (req, rest) => {
+  rest.send({
+    auth_token: 'token',
+    name: 'Matias Iordache',
+    avatar: 'assets/img/matias.jpg'
+  });
 });
 
 const port = process.env.port || 3333;
