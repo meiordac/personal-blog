@@ -4,33 +4,33 @@
  **/
 
 import * as express from 'express';
-import cors from 'cors';
-
-// mock data
-import { posts, comments } from './app/mock';
+import * as cors from 'cors';
+import models, { connectDb } from './app/models';
+import { createSeeds } from './app/db/seed';
+import { environment } from './environments/environment';
 
 const app = express();
 app.use(cors());
 
-app.get('/api', (req, res) => {
-  res.send({ message: 'Welcome to personal-blog-backend!' });
-});
-
-app.get('/api/posts', (req, res) => {
+app.get('/api/posts', async (req, res) => {
+  const posts = await models.Post.find().exec();
   res.send(posts);
 });
 
-app.get('/api/posts/:id', (req, res) => {
+app.get('/api/posts/:id', async (req, res) => {
+  const post = await models.Post.findById(req.params.id).exec();
   console.log('Request Id:', req.params.id);
-  res.send(posts[0]);
+  res.send(post);
 });
 
-app.get('/api/comments', (req, res) => {
+app.get('/api/comments', async (req, res) => {
+  const comments = await models.Comment.find().exec();
   res.send(comments);
 });
 
-app.post('/api/comments', (req, rest) => {
-  rest.send(comments[0]);
+app.post('/api/comments', async (req, rest) => {
+  const comment = await new models.Comment(req.body).save();
+  rest.send(comment);
 });
 
 app.post('/api/authenticate', (req, rest) => {
@@ -42,7 +42,19 @@ app.post('/api/authenticate', (req, rest) => {
 });
 
 const port = process.env.port || 3333;
-const server = app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}/api`);
+
+connectDb().then(async () => {
+  if (environment.eraseDatabaseOnSync) {
+    await Promise.all([
+      models.User.deleteMany({}),
+      models.Post.deleteMany({}),
+      models.Comment.deleteMany({})
+    ]);
+    createSeeds();
+  }
+
+  const server = app.listen(port, () => {
+    console.log(`Listening at http://localhost:${port}/api`);
+  });
+  server.on('error', console.error);
 });
-server.on('error', console.error);

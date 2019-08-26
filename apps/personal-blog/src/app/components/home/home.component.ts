@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 
 import { Post } from '../../../../../../libs/shared/src/models/post';
 import { PostService } from '../../services/post.service';
+import { first, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -55,10 +56,16 @@ export class HomeComponent implements OnInit {
    * @memberof HomeComponent
    */
   getPosts(): void {
-    this.postService.getPosts().subscribe(posts => {
-      this.posts = posts;
-      this.posts = this.posts.sort(this.compare);
-    });
+    this.postService
+      .getPosts()
+      .pipe(
+        first(),
+        map(posts => posts.map(post => Object.assign(new Post(), post)))
+      )
+      .subscribe(posts => {
+        this.posts = posts;
+        this.posts = this.posts.sort(this.compare);
+      });
   }
 
   /**

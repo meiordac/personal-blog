@@ -1,5 +1,9 @@
 export class Post {
-  id: number;
+  get id() {
+    return this._id;
+  }
+
+  _id: string;
   title: string;
   content: string;
   author: string;

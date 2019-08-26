@@ -48,7 +48,7 @@ export class PostDetailComponent implements OnInit {
     this.user = this.userService.getUser();
 
     this.route.params.forEach((params: Params) => {
-      const id = +params['id'];
+      const id = params['id'];
 
       this.getPost(id);
       this.fetchComments(id);
