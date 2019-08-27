@@ -1,7 +1,7 @@
 <app-toolbar></app-toolbar>
 <div class="app-content">
     <div class="containerX">
-        <form (ngSubmit)="login()" #loginForm="ngForm">
+        <form (ngSubmit)="login()" [formGroup]="loginForm">
             <mat-card class="login-card">
                 <mat-card-header>
                     <div mat-card-avatar class="header-image"></div>
@@ -10,12 +10,12 @@
                 <mat-card-content>
                     <div fxLayout="row" class="container">
 
-                        <mat-form-field class="example-full-width">
-                            <input matInput name="user" placeholder="Email" [formControl]="emailFormControl" [(ngModel)]="model.email">
-                            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                        <mat-form-field>
+                            <input matInput name="user" placeholder="Email" formControlName="email"  >
+                            <mat-error *ngIf="loginForm.controls.email.hasError('email') && !loginForm.controls.email.hasError('required')">
                                 Please enter a valid email address
                             </mat-error>
-                            <mat-error *ngIf="emailFormControl.hasError('required')">
+                            <mat-error *ngIf="loginForm.controls.email.hasError('required')">
                                 Email is <strong>required</strong>
                             </mat-error>
                         </mat-form-field>
@@ -24,8 +24,8 @@
                     <div fxLayout="row" class="container">
 
                         <mat-form-field class="example-form-field">
-                            <input matInput name="password" type="password" placeholder="Password" [(ngModel)]="model.password" />
-                            <button mat-button *ngIf="model.password" matSuffix mat-icon-button aria-label="Clear" (click)="model.password=''">
+                            <input matInput name="password" formControlName="password" type="password" placeholder="Password"  autocomplete="password" />
+                            <button mat-button *ngIf="loginForm.value.password" matSuffix mat-icon-button aria-label="Clear" (click)="loginForm.controls.password.reset()">
                                       <mat-icon>close</mat-icon>
                                     </button>
                         </mat-form-field>
@@ -33,7 +33,7 @@
                     </div>
                 </mat-card-content>
                 <mat-card-actions>
-                    <button mat-raised-button [disabled]="!loginForm.form.valid"> Login </button>
+                    <button mat-raised-button [disabled]="!loginForm.valid"> Login </button>
                     <div *ngIf="error">{{error}}</div>
                 </mat-card-actions>
             </mat-card>
