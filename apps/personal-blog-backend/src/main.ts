@@ -13,6 +13,7 @@ import models, { connectDb } from './app/models';
 
 import { createSeeds } from './app/db/seed';
 import { environment } from './environments/environment';
+import routes from './app/routes';
 
 const app = express();
 
@@ -24,42 +25,9 @@ app.use(bodyParser.json());
 // allow cors
 app.use(cors());
 
-app.get('/api/posts', async (req, res) => {
-  const posts = await models.Post.find().exec();
-  res.send(posts);
-});
-
-app.post('/api/posts', async (req, res) => {
-  const body = req.body;
-  const post = await new models.Post(body).save();
-  res.send(post);
-});
-
-app.get('/api/posts/:id', async (req, res) => {
-  const post = await models.Post.findById(req.params.id).exec();
-  console.log('Request Id:', req.params.id);
-  res.send(post);
-});
-
-app.get('/api/comments', async (req, res) => {
-  const comments = await models.Comment.find().exec();
-  res.send(comments);
-});
-
-app.post('/api/comments', async (req, rest) => {
-  const comment = await new models.Comment(req.body).save();
-  rest.send(comment);
-});
-
-app.post('/api/users', async (req, rest, next) => {
-  const body = req.body;
-  const user = await new models.User(body).save();
-  if (user) {
-    rest.send(user);
-  } else {
-    next('Error creating user');
-  }
-});
+app.use('/api/posts', routes.post);
+app.use('/api/users', routes.user);
+app.use('/api/comments', routes.comment);
 
 app.post('/api/authenticate', async (req, rest, next) => {
   const body = req.body;
