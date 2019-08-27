@@ -52,7 +52,7 @@ export class CommentComponent implements OnInit {
     }
 
     this.commentService
-      .create(content, this.post.id)
+      .create(content, this.post._id)
       .pipe(first())
       .subscribe(comment => {
         this.comments.push(comment);

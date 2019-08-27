@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
    * @memberof HomeComponent
    */
   gotoDetail(post: Post): void {
-    const link = ['/detail', post.id];
+    const link = ['/detail', post._id];
     this.router.navigate(link);
   }
 
