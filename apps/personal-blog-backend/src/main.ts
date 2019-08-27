@@ -29,6 +29,12 @@ app.get('/api/posts', async (req, res) => {
   res.send(posts);
 });
 
+app.post('/api/posts', async (req, res) => {
+  const body = req.body;
+  const post = await new models.Post(body).save();
+  res.send(post);
+});
+
 app.get('/api/posts/:id', async (req, res) => {
   const post = await models.Post.findById(req.params.id).exec();
   console.log('Request Id:', req.params.id);
@@ -45,10 +51,14 @@ app.post('/api/comments', async (req, rest) => {
   rest.send(comment);
 });
 
-app.post('/api/users', async (req, rest) => {
+app.post('/api/users', async (req, rest, next) => {
   const body = req.body;
   const user = await new models.User(body).save();
-  rest.send(user);
+  if (user) {
+    rest.send(user);
+  } else {
+    next('Error creating user');
+  }
 });
 
 app.post('/api/authenticate', async (req, rest, next) => {
