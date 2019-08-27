@@ -16,6 +16,9 @@
     },
     "personal-blog-backend": {
       "tags": []
+    },
+    "shared": {
+      "tags": []
     }
   }
 }

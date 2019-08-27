@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Post } from '../../shared/post';
+import { Post } from '../../../../../../libs/shared/src/models/post';
 import { PostService } from '../../services/post.service';
+import { first, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -35,7 +36,7 @@ export class HomeComponent implements OnInit {
    * @memberof HomeComponent
    */
   gotoDetail(post: Post): void {
-    const link = ['/detail', post.id];
+    const link = ['/detail', post._id];
     this.router.navigate(link);
   }
 
@@ -55,10 +56,16 @@ export class HomeComponent implements OnInit {
    * @memberof HomeComponent
    */
   getPosts(): void {
-    this.postService.getPosts().subscribe(posts => {
-      this.posts = posts;
-      this.posts = this.posts.sort(this.compare);
-    });
+    this.postService
+      .getPosts()
+      .pipe(
+        first(),
+        map(posts => posts.map(post => Object.assign(new Post(), post)))
+      )
+      .subscribe(posts => {
+        this.posts = posts;
+        this.posts = this.posts.sort(this.compare);
+      });
   }
 
   /**

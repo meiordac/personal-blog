@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { PostService } from '../../services/post.service';
-import { Post } from '../../shared/post';
+import { Post } from '../../../../../../libs/shared/src/models/post';
 
 @Component({
   selector: 'app-add-post',

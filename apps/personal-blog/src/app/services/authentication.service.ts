@@ -14,32 +14,37 @@ export class AuthenticationService {
 
   login(email: string, password: string): Observable<boolean> {
     const user = JSON.stringify({ email: email, password: password });
+    const options = {
+      headers: { 'Content-Type': ['application/json'] }
+    };
     console.log(user);
-    return this.http.post<Login>(`${environment.api}/authenticate`, user).pipe(
-      map(response => {
-        // login successful if there's a jwt token in the response
-        const token = response.auth_token;
-        if (token) {
-          // set token property
-          this.token = token;
-          // store username and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem(
-            'currentUser',
-            JSON.stringify({
-              name: response.name,
-              avatar: response.avatar,
-              email: email,
-              token: token
-            })
-          );
-          // return true to indicate successful login
-          return true;
-        } else {
-          // return false to indicate failed login
-          return false;
-        }
-      })
-    );
+    return this.http
+      .post<Login>(`${environment.api}/authenticate`, user, options)
+      .pipe(
+        map(response => {
+          // login successful if there's a jwt token in the response
+          const token = response.auth_token;
+          if (token) {
+            // set token property
+            this.token = token;
+            // store username and jwt token in local storage to keep user logged in between page refreshes
+            localStorage.setItem(
+              'currentUser',
+              JSON.stringify({
+                name: response.name,
+                avatar: response.avatar,
+                email: email,
+                token: token
+              })
+            );
+            // return true to indicate successful login
+            return true;
+          } else {
+            // return false to indicate failed login
+            return false;
+          }
+        })
+      );
   }
 
   logout() {
