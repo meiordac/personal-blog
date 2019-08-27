@@ -43,6 +43,12 @@ app.post('/api/comments', async (req, rest) => {
   rest.send(comment);
 });
 
+app.post('/api/users', async (req, rest) => {
+  const body = req.body;
+  const user = await new models.User(body).save();
+  rest.send(user);
+});
+
 app.post('/api/authenticate', (req, rest) => {
   rest.send({
     auth_token: 'token',
