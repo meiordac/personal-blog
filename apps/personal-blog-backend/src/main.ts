@@ -5,11 +5,21 @@
 
 import * as express from 'express';
 import * as cors from 'cors';
+import * as bodyParser from 'body-parser';
+
 import models, { connectDb } from './app/models';
+
 import { createSeeds } from './app/db/seed';
 import { environment } from './environments/environment';
 
 const app = express();
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+// parse application/json
+app.use(bodyParser.json());
+
+// allow cors
 app.use(cors());
 
 app.get('/api/posts', async (req, res) => {
