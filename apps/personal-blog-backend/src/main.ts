@@ -23,6 +23,7 @@ app.use(bodyParser.json());
 // allow cors
 app.use(cors());
 
+// use all api routes
 app.use('/api/posts', routes.post);
 app.use('/api/users', routes.user);
 app.use('/api/comments', routes.comment);
@@ -31,6 +32,15 @@ app.use('/api/authenticate', routes.authentication);
 const port = process.env.port || 3333;
 
 connectDb().then(async () => {
+  await eraseDataBaseOnSync();
+
+  const server = app.listen(port, () => {
+    console.log(`Listening at http://localhost:${port}/api`);
+  });
+  server.on('error', console.error);
+});
+
+async function eraseDataBaseOnSync() {
   if (environment.eraseDatabaseOnSync) {
     await Promise.all([
       models.User.deleteMany({}),
@@ -39,9 +49,4 @@ connectDb().then(async () => {
     ]);
     createSeeds();
   }
-
-  const server = app.listen(port, () => {
-    console.log(`Listening at http://localhost:${port}/api`);
-  });
-  server.on('error', console.error);
-});
+}
