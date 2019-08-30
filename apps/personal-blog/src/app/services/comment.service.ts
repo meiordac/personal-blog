@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { catchError, tap, first } from 'rxjs/operators';
+import { catchError, tap, first, filter, map } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
 import { UserService } from '../services/user.service';
@@ -35,9 +35,14 @@ export class CommentService {
    * @returns {Observable<Comment[]>}
    * @memberof CommentService
    */
-  getComments(id: number): Observable<Comment[]> {
+  getComments(id: string): Observable<Comment[]> {
     return this.getAllComments().pipe(
       tap(_ => console.log(`fetched comments for post id=${id}`)),
+      map(comments =>
+        comments.filter(
+          comment => comment && comment.post && comment.post._id === id
+        )
+      ),
       catchError(handleError<Comment[]>(`getComments id=${id}`))
     );
   }
@@ -45,21 +50,20 @@ export class CommentService {
   /**
    *
    *
-   * @param {String} content
-   * @param {String} id_post
+   * @param {string} content
+   * @param {string} id_post
    * @returns {Observable<Comment>}
    * @memberof CommentService
    */
-  create(content: String, id_post: String): Observable<Comment> {
+  create(content: string, id_post: string): Observable<Comment> {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     const options = {
       headers: { 'Content-Type': ['application/json'] }
     };
     const new_comment = JSON.stringify({
-      id_user: currentUser._id,
-      id_post: id_post,
+      post: id_post,
       content: content,
-      author: currentUser.name,
+      author: currentUser._id,
       published_at: new Date(),
       avatar: currentUser.avatar
     });

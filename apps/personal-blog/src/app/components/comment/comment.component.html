@@ -1,42 +1,44 @@
-<mat-card class="example-card">
-    <mat-card-actions>
-        <div class="commentForm">
-            <img class="avatar" *ngIf="user.avatar" mat-card-avatar src={{user.avatar}}>
+<div class="container">
+  <mat-card>
+      <mat-card-actions>
+          <div class="commentForm">
+              <img class="avatar" *ngIf="user.avatar" mat-card-avatar src={{user.avatar}}>
 
-            <mat-form-field class="example-full-width">
-                <textarea matInput #commentInput placeholder="Leave a comment"></textarea>
-            </mat-form-field>
+              <mat-form-field class="full-width">
+                  <textarea matInput #commentInput placeholder="Leave a comment"></textarea>
+              </mat-form-field>
 
-            <button mat-raised-button (click)="addComment(commentInput.value); commentInput.value='' "> 
-    <i class="fa fa-check" aria-hidden="true"></i> 
-  </button>
-        </div>
-    </mat-card-actions>
-</mat-card>
+              <button mat-raised-button (click)="addComment(commentInput.value); commentInput.value='' ">
+      <i class="fa fa-check" aria-hidden="true"></i>
+    </button>
+          </div>
+      </mat-card-actions>
+  </mat-card>
 
-<mat-card class="comment-card" *ngFor="let comment of comments">
-    <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{comment.author}}</mat-card-title>
-        <mat-card-subtitle>{{comment.published_at | date}}</mat-card-subtitle>
-    </mat-card-header>
+  <br/>
 
-    <img *ngIf="comment.avatar" mat-card-avatar src={{comment.avatar}}>
-    <mat-card-content>
+  <mat-card class="comment-card" *ngFor="let comment of comments">
+      <mat-card-header>
+          <div mat-card-avatar class="header-image"></div>
+          <mat-card-title>{{comment.author}}</mat-card-title>
+          <mat-card-subtitle>{{comment.published_at | date}}</mat-card-subtitle>
+      </mat-card-header>
 
-        <span [innerHTML]="comment.content | newlines"></span>
-    </mat-card-content>
-    <mat-card-actions>
-        <button mat-raised-button (click)="upvote(comment)">         
-            <mat-icon>thumb_up</mat-icon>
-              {{comment.upvotes}}
-            </button>
-        <button mat-raised-button (click)="downvote(comment)">         
-            <mat-icon>thumb_down</mat-icon>
-              {{comment.downvotes}}
-            </button>
-    </mat-card-actions>
-</mat-card>
+      <img *ngIf="comment.avatar" mat-card-avatar src={{comment.avatar}}>
+      <mat-card-content>
 
+          <span [innerHTML]="comment.content | newlines"></span>
+      </mat-card-content>
+      <mat-card-actions>
+          <button mat-raised-button (click)="upvote(comment)">
+              <mat-icon>thumb_up</mat-icon>
+                {{comment.upvotes}}
+              </button>
+          <button mat-raised-button (click)="downvote(comment)">
+              <mat-icon>thumb_down</mat-icon>
+                {{comment.downvotes}}
+              </button>
+      </mat-card-actions>
+  </mat-card>
 
-<br/>
+</div>

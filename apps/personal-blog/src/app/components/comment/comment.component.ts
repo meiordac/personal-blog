@@ -45,7 +45,7 @@ export class CommentComponent implements OnInit {
    * @returns {void}
    * @memberof CommentComponent
    */
-  addComment(content: String): void {
+  addComment(content: string): void {
     console.log(content);
     if (!content) {
       return;

@@ -31,6 +31,7 @@ export class AuthenticationService {
             localStorage.setItem(
               'currentUser',
               JSON.stringify({
+                id: response.id,
                 name: response.name,
                 avatar: response.avatar,
                 email: email,
@@ -73,6 +74,7 @@ export class AuthenticationService {
 
 interface Login {
   name: string;
+  id: string;
   avatar: string;
   auth_token: string;
 }

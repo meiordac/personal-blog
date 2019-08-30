@@ -1,6 +1,6 @@
 <app-toolbar></app-toolbar>
 
-<div class="containerX">
+<div >
     <div fxLayout="row" class="content">
         <div fxFlex="10"> </div>
         <div fxFlex="80">
@@ -10,15 +10,19 @@
                         <mat-card-title> {{post.title}} </mat-card-title>
                         <mat-card-subtitle>by {{post.author}} on {{post.published_at | date:'fullDate'}} </mat-card-subtitle>
                     </mat-card-header>
-                    <img mat-card-image src={{post.image}}>
-                    <mat-card-content>
-                        <span class="postcontent" [innerHTML]="post.content | newlines"></span>
-                    </mat-card-content>
 
-                    <mat-card-actions>
-                        <button mat-raised-button (click)="linkedInShare(post)"><i class='fa fa-share-alt'></i> </button>
-                        <button mat-raised-button (click)="goBack()"> BACK </button>
-                    </mat-card-actions>
+                    <img mat-card-image src={{post.image}}>
+
+                    <div class="container">
+                      <mat-card-content >
+                          <span class="postcontent" [innerHTML]="post.content | newlines"></span>
+                      </mat-card-content>
+
+                      <mat-card-actions>
+                          <button mat-raised-button (click)="linkedInShare(post)"><i class='fa fa-share-alt'></i> </button>
+                          <button mat-raised-button (click)="goBack()"> BACK </button>
+                      </mat-card-actions>
+                    </div>
                 </mat-card>
                 <br/>
                 <app-comment *ngIf="user" [post]="post" [comments]="comments"></app-comment>

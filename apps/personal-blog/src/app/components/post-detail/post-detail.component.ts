@@ -18,7 +18,7 @@ import { first } from 'rxjs/operators';
 export class PostDetailComponent implements OnInit {
   user: User;
   post: Post;
-  comments: Comment[];
+  comments: Comment[] = [];
 
   /**
    *Creates an instance of PostDetailComponent.
@@ -85,10 +85,10 @@ export class PostDetailComponent implements OnInit {
    *
    *
    * @private
-   * @param {number} id
+   * @param {string} id
    * @memberof PostDetailComponent
    */
-  private fetchComments(id: number) {
+  private fetchComments(id: string) {
     this.commentService
       .getComments(id)
       .pipe(first())

@@ -2,10 +2,16 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+
   .avatar {
     margin-right: 1rem;
   }
-   button {
+
+  button {
     margin-left: 1rem;
   }
+}
+
+.comment-card {
+  margin-bottom: 1rem;
 }

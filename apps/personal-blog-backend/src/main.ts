@@ -47,6 +47,7 @@ async function eraseDataBaseOnSync() {
       models.Post.deleteMany({}),
       models.Comment.deleteMany({})
     ]);
+
     createSeeds();
   }
 }

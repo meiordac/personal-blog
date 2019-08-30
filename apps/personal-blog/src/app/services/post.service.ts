@@ -7,6 +7,7 @@ import { environment } from '../../environments/environment';
 import { UserService } from '../services/user.service';
 import { handleError } from '../shared/httpHelper';
 import { Post } from '../../../../../libs/shared/src/models/post';
+import { User } from 'libs/shared/src/models/user';
 
 /**
  *
@@ -65,21 +66,26 @@ export class PostService {
    * @memberof PostService
    */
   create(
-    title: String,
-    content: String,
-    author: String,
-    image: String
+    title: string,
+    content: string,
+    author: User,
+    image: string
   ): Observable<Post> {
     const options = {
       headers: { 'Content-Type': ['application/json'] }
     };
-    const new_post = JSON.stringify({
+
+    const new_post = <Post>{
       title: title,
       content: content,
       author: author,
       published_at: new Date(),
-      avatar: image
-    });
-    return this.http.post<Post>(this.postsURL, new_post, options);
+      image: image
+    };
+    return this.http.post<Post>(
+      this.postsURL,
+      JSON.stringify(new_post),
+      options
+    );
   }
 }

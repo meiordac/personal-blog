@@ -28,7 +28,7 @@ export class AddPostComponent implements OnInit {
       .create(
         this.model.title,
         this.model.content,
-        currentUser.name,
+        currentUser._id,
         this.model.image
       )
       .subscribe(post => {
